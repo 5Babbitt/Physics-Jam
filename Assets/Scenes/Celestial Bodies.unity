@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.04365709, g: 0.044818856, b: 0.05955075, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3925,7 +3925,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2048202507}
   - {fileID: 128738387}
   - {fileID: 1667629274}
   - {fileID: 536307305}
@@ -3943,7 +3942,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21b70949bec837d4c926c2b79b18f4b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationInput: {x: 0, y: 0}
+  rotationInput: {x: 0, y: 0, z: 0}
   thrustInput: 0
   fireInput: 0
 --- !u!114 &1561715384
@@ -4032,8 +4031,11 @@ MonoBehaviour:
   rb: {fileID: 1561715386}
   mass: 1
   angularDrag: 1.5
-  thrustSpeed: 1
-  angularSpeed: 45
+  thrustSpeed: 7.5
+  angularSpeed: 135
+  pitch: {x: 0, y: 0, z: 0}
+  yaw: {x: 0, y: 0, z: 0}
+  roll: {x: 0, y: 0, z: 0}
 --- !u!114 &1561715388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4498,11 +4500,11 @@ Transform:
   m_GameObject: {fileID: 2048202506}
   serializedVersion: 2
   m_LocalRotation: {x: -1e-45, y: 1e-45, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: -18.300003}
+  m_LocalPosition: {x: 0, y: 5, z: -1218.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1561715382}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!114 &2048202509
 MonoBehaviour:
@@ -4757,6 +4759,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 3940311648479741809}
+  - {fileID: 2048202507}
   - {fileID: 1561715382}
   - {fileID: 1325258786}
   - {fileID: 1249551397}

@@ -8,7 +8,7 @@ public class ShipInput : ShipSystem
 {
     private PlayerInput input;
     
-    [SerializeField] private Vector2 rotationInput;
+    [SerializeField] private Vector3 rotationInput;
     [SerializeField] private bool thrustInput;
     [SerializeField] private bool fireInput;
     
@@ -32,7 +32,7 @@ public class ShipInput : ShipSystem
 
     private void GetInput()
     {
-        rotationInput = input.actions["Rotation"].ReadValue<Vector2>();
+        rotationInput = input.actions["Rotation"].ReadValue<Vector3>();
         thrustInput = input.actions["Thrust"].IsPressed();
         fireInput = input.actions["Fire"].WasPressedThisFrame();
     }

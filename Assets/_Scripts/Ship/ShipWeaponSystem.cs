@@ -33,6 +33,11 @@ public class ShipWeaponSystem : ShipSystem
 
     private void FireTorpedo()
     {
+        NumTorpedoes--;
+
+        if (NumTorpedoes <= 0)
+            return;
+        
         Instantiate(torpedo, firePoint.position, firePoint.rotation).GetComponent<Torpedo>();
     }
 }

@@ -8,7 +8,9 @@ public class ShipMovement : ShipSystem
     public Rigidbody rb;
     
     // Input
-    private Vector2 rotationinput;
+    private float pitchInput;
+    private float yawInput;
+    private float rollInput;
     private bool applyThrust;
     
     [Header("Rigidbody Values")]
@@ -18,6 +20,11 @@ public class ShipMovement : ShipSystem
     [Header("Speed Values")]
     [SerializeField] private float thrustSpeed;
     [SerializeField] private float angularSpeed;
+
+    [Header("Movement Values")]
+    [SerializeField] private Vector3 pitch;
+    [SerializeField] private Vector3 yaw;
+    [SerializeField] private Vector3 roll;
 
     protected override void Awake() 
     {
@@ -40,7 +47,7 @@ public class ShipMovement : ShipSystem
 
     private void Update() 
     {
-        
+        CalculateTorque();
     }
 
     private void FixedUpdate()
@@ -60,12 +67,16 @@ public class ShipMovement : ShipSystem
         ship.id.Events.OnThrustUsed?.Invoke();
     }
 
+    private void CalculateTorque()
+    {
+        pitch = transform.right * pitchInput;
+        yaw = transform.up * yawInput;
+        roll = transform.forward * rollInput;
+    }
+
     private void ApplyTorque()
     {
-        Vector3 pitch = transform.right * rotationinput.y;
-        Vector3 yaw = transform.up * rotationinput.x;
-        
-        Vector3 _rotation = pitch + yaw;
+        Vector3 _rotation = pitch + yaw + roll;
         
         rb.AddTorque(_rotation * mass * angularSpeed * Mathf.Deg2Rad);
     }
@@ -75,9 +86,11 @@ public class ShipMovement : ShipSystem
         applyThrust = value;
     }
 
-    private void OnTurnInput(Vector2 vector)
+    private void OnTurnInput(Vector3 vector)
     {
-        rotationinput = vector;
+        pitchInput = -vector.y;
+        yawInput = vector.x;
+        rollInput = -vector.z;
     }
 
     private void OnValidate() 

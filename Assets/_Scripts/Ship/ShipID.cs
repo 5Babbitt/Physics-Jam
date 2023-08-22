@@ -16,7 +16,7 @@ public class ShipID : ScriptableObject
 public struct ShipEvents
 {
     // Input Events
-    public Action<Vector2> OnTurnInput;
+    public Action<Vector3> OnTurnInput;
     public Action<bool> OnThrustInput;
     public Action OnFireInput;
     public Action OnHyperdriveInput;
@@ -24,9 +24,10 @@ public struct ShipEvents
     // Movement Events
     public Action OnThrustUsed;
     public Action OnHyperdriveActivated;
+    public Action<float> OnFuelChanged;
 
     // Collision Events
-    public Action OnTakeDamage;
+    public Action<int> OnTakeDamage;
 
     // UI Events
 
