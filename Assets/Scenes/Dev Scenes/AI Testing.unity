@@ -307,13 +307,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83657a3a685445b4296da86f4d5ea927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mass: 2999.9998
   radius: 1
   surfaceGravity: 3
   initialVelocity: {x: -5, y: 0, z: 0}
-  bodyCollider: {fileID: 212652162}
-  bodyType: 2
   meshHolder: {fileID: 0}
+  bodyType: 0
+  mass: 2999.9998
 --- !u!96 &212652160
 TrailRenderer:
   serializedVersion: 3
@@ -758,13 +757,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83657a3a685445b4296da86f4d5ea927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mass: 999.99994
-  radius: 1
-  surfaceGravity: 1
+  radius: 5
+  surfaceGravity: 1.5
   initialVelocity: {x: 0, y: 0, z: 0}
-  bodyCollider: {fileID: 2116771038}
-  bodyType: 2
   meshHolder: {fileID: 1980334528}
+  bodyType: 2
+  mass: 37500
 --- !u!54 &645191439
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -773,7 +771,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 645191437}
   serializedVersion: 4
-  m_Mass: 999.99994
+  m_Mass: 37500
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -801,7 +799,7 @@ Transform:
   m_GameObject: {fileID: 645191437}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -377.8, y: -1.5, z: 118.82}
+  m_LocalPosition: {x: -778, y: -1.5, z: 386}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -945,13 +943,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83657a3a685445b4296da86f4d5ea927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mass: 1999.9999
   radius: 1
   surfaceGravity: 2
   initialVelocity: {x: 0, y: 0, z: -7}
-  bodyCollider: {fileID: 1048334808}
-  bodyType: 1
   meshHolder: {fileID: 1048334805}
+  bodyType: 0
+  mass: 1999.9999
 --- !u!96 &704040393
 TrailRenderer:
   serializedVersion: 3
@@ -1245,13 +1242,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83657a3a685445b4296da86f4d5ea927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mass: 6124.9995
   radius: 1.75
   surfaceGravity: 2
   initialVelocity: {x: 0, y: 0, z: -8}
-  bodyCollider: {fileID: 1160698414}
-  bodyType: 2
   meshHolder: {fileID: 338312645}
+  bodyType: 0
+  mass: 6124.9995
 --- !u!96 &1160698412
 TrailRenderer:
   serializedVersion: 3
@@ -1463,13 +1459,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83657a3a685445b4296da86f4d5ea927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mass: 1999.9999
   radius: 1
   surfaceGravity: 2
   initialVelocity: {x: 0, y: 0, z: 11.5}
-  bodyCollider: {fileID: 1304030605}
-  bodyType: 2
   meshHolder: {fileID: 0}
+  bodyType: 0
+  mass: 1999.9999
 --- !u!96 &1304030603
 TrailRenderer:
   serializedVersion: 3
@@ -1722,7 +1717,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2116771041}
@@ -1863,13 +1858,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83657a3a685445b4296da86f4d5ea927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mass: 220430240
   radius: 93.9
   surfaceGravity: 25
   initialVelocity: {x: 0, y: 0, z: 0}
-  bodyCollider: {fileID: 347111715}
-  bodyType: 0
   meshHolder: {fileID: 188214971}
+  bodyType: 0
+  mass: 220430240
 --- !u!54 &2130018721
 Rigidbody:
   m_ObjectHideFlags: 0

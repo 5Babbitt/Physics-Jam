@@ -4,28 +4,31 @@ using UnityEngine;
 public class GravityBody : MonoBehaviour
 {
     Rigidbody rb;
+    
+    public Rigidbody Rigidbody { get { return rb; } }
+    
 
-    public float mass;
-
+    [Header("General Properties")]
     [Range(1f, 200f)] public float radius = 5f;
     public float surfaceGravity = 1;
-
     public Vector3 initialVelocity;
 
     private Vector3 currentVelocity;
     private Vector3 currentForce;
 
-    [SerializeField] private BodyTypes bodyType;
     [SerializeField] private Transform meshHolder;
+    
+    public BodyTypes bodyType;
 
-    public Rigidbody Rigidbody { get { return rb; } }
+    [Header("Ship Porperties")]
+    public float mass;
 
     private void Awake()
     {
         currentVelocity = initialVelocity;
         
         SetupRigidbody();
-        
+
         rb.useGravity = false;
         rb.velocity = currentVelocity;
     }

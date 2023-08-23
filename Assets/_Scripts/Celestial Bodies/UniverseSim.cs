@@ -26,16 +26,6 @@ public class UniverseSim : Singleton<UniverseSim>
 
     private void FixedUpdate() 
     {
-        // for (int i = 0; i < bodies.Length; i++)
-        // {
-        //     bodies[i].UpdateForce(bodies);
-        // }
-
-        // for (int i = 0; i < bodies.Length; i++)
-        // {
-        //     bodies[i].ApplyForce();
-        // }
-
         foreach (var body in bodies)
         {
             body.UpdateForce(bodies.ToArray());

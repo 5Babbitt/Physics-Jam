@@ -147,13 +147,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83657a3a685445b4296da86f4d5ea927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mass: 0
   radius: 0
   surfaceGravity: 0
   initialVelocity: {x: 0, y: 0, z: 0}
-  bodyCollider: {fileID: 288008624310369442}
-  bodyType: 0
   meshHolder: {fileID: 0}
+  bodyType: 0
+  mass: 0
 --- !u!96 &4844088555599280498
 TrailRenderer:
   serializedVersion: 3
