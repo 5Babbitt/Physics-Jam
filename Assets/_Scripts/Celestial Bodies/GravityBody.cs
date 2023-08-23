@@ -15,7 +15,6 @@ public class GravityBody : MonoBehaviour
     private Vector3 currentVelocity;
     private Vector3 currentForce;
 
-    [SerializeField] private SphereCollider bodyCollider;
     [SerializeField] private BodyTypes bodyType;
     [SerializeField] private Transform meshHolder;
 
@@ -23,12 +22,11 @@ public class GravityBody : MonoBehaviour
 
     private void Awake()
     {
-        SetupRigidbody();
-        rb.useGravity = false;
-
         currentVelocity = initialVelocity;
-        //PhysicsHelper.ApplyForceToReachVelocity(rb, currentVelocity, mass, ForceMode.Impulse);
-
+        
+        SetupRigidbody();
+        
+        rb.useGravity = false;
         rb.velocity = currentVelocity;
     }
 
@@ -63,12 +61,15 @@ public class GravityBody : MonoBehaviour
         
         SetupRigidbody();
 
-        if (meshHolder != null)
+        if (meshHolder != null && bodyType != BodyTypes.ship)
             meshHolder.localScale = Vector3.one * radius * 2;
     }
 
     private void CalculateMass()
     {
+        if (bodyType == BodyTypes.ship)
+            return;
+        
         mass = surfaceGravity * radius * radius / Universe.gravitationalConstant;
     }
 
