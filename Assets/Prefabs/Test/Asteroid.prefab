@@ -106,7 +106,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 0
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &6392002537372923328
 Rigidbody:
@@ -116,7 +116,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1739795332435425498}
   serializedVersion: 4
-  m_Mass: 1000
+  m_Mass: 0.0000001
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -147,8 +147,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83657a3a685445b4296da86f4d5ea927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mass: 1000
+  mass: 0
+  radius: 0
+  surfaceGravity: 0
   initialVelocity: {x: 0, y: 0, z: 0}
+  bodyCollider: {fileID: 288008624310369442}
+  bodyType: 0
+  meshHolder: {fileID: 0}
 --- !u!96 &4844088555599280498
 TrailRenderer:
   serializedVersion: 3
