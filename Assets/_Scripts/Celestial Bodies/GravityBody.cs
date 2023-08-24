@@ -3,21 +3,34 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class GravityBody : MonoBehaviour
 {
-    public float mass;
+    Rigidbody rb;
+    
+    public Rigidbody Rigidbody { get { return rb; } }
+    
+
+    [Header("General Properties")]
+    [Range(1f, 200f)] public float radius = 5f;
+    public float surfaceGravity = 1;
     public Vector3 initialVelocity;
 
     private Vector3 currentVelocity;
     private Vector3 currentForce;
 
-    Rigidbody rb;
-    public Rigidbody Rigidbody { get { return rb; } }
+    [SerializeField] private Transform meshHolder;
+    
+    public BodyTypes bodyType;
+
+    [Header("Ship Porperties")]
+    public float mass;
 
     private void Awake()
     {
+        currentVelocity = initialVelocity;
+        
         SetupRigidbody();
 
-        currentVelocity = initialVelocity;
-        PhysicsHelper.ApplyForceToReachVelocity(rb, currentVelocity, mass, ForceMode.Impulse);
+        rb.useGravity = false;
+        rb.velocity = currentVelocity;
     }
 
     public void UpdateForce(GravityBody[] allBodies)
@@ -47,14 +60,25 @@ public class GravityBody : MonoBehaviour
 
     private void OnValidate() 
     {
+        CalculateMass();
+        
         SetupRigidbody();
+
+        if (meshHolder != null && bodyType != BodyTypes.ship)
+            meshHolder.localScale = Vector3.one * radius * 2;
+    }
+
+    private void CalculateMass()
+    {
+        if (bodyType == BodyTypes.ship)
+            return;
+        
+        mass = surfaceGravity * radius * radius / Universe.gravitationalConstant;
     }
 
     private void SetupRigidbody()
     {
         rb = GetComponent<Rigidbody>();
-
-        rb.useGravity = false;
         rb.mass = mass;
     }
 
@@ -63,4 +87,17 @@ public class GravityBody : MonoBehaviour
         Universe.OnGravityBodyDestroyed?.Invoke(this);
     }
 
+    private void OnDrawGizmosSelected() 
+    {
+        
+    }
+
+}
+
+public enum BodyTypes
+{
+    star,
+    planet,
+    asteroid,
+    ship
 }
