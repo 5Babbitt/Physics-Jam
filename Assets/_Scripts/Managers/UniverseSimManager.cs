@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using QFSW.QC;
 
-public class UniverseSim : Singleton<UniverseSim>
+public class UniverseSimManager : Singleton<UniverseSimManager>
 {
     [SerializeField] List<GravityBody> bodies = new List<GravityBody>();
     [field:SerializeField] public Universe universalValues { get; private set; }
@@ -67,12 +67,12 @@ public class UniverseSim : Singleton<UniverseSim>
     }
 
     [Command]
-    public void SpawnGravityObject(float xPos = 25, float zPos = 0, float velX = 0f, float velZ = 7f, float mass = 10f)
+    public void SpawnGravityObject(Vector3 position, Vector3 initialVelocity, float mass = 10f)
     {
-        var newBody = Instantiate(gravityBodyPrefab, new Vector3(xPos, 0, zPos), Quaternion.identity).GetComponent<GravityBody>();
+        var newBody = Instantiate(gravityBodyPrefab, position, Quaternion.identity).GetComponent<GravityBody>();
         newBody.mass = mass;
-        var vel = new Vector3(velX, 0, velZ);
-
+        var vel = initialVelocity;
+        
         PhysicsHelper.ApplyForceToReachVelocity(newBody.Rigidbody, vel, newBody.mass, ForceMode.Impulse);
 
         AddNewBody(newBody);

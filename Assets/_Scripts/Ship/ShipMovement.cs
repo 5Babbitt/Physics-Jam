@@ -22,6 +22,7 @@ public class ShipMovement : ShipSystem
     [SerializeField] private float angularSpeed;
 
     [Header("Movement Values")]
+    [SerializeField] private bool hasFuel = true;
     [SerializeField] private Vector3 pitch;
     [SerializeField] private Vector3 yaw;
     [SerializeField] private Vector3 roll;
@@ -60,11 +61,14 @@ public class ShipMovement : ShipSystem
 
     private void ApplyThrust()
     {
+        if (!hasFuel)
+            return;
+        
         int thrustInput = applyThrust ? 1 : 0;
         
         rb.AddForce(thrustInput * mass * thrustSpeed * transform.forward);
 
-        ship.id.Events.OnThrustUsed?.Invoke();
+        ship.id.Events.OnThrust?.Invoke();
     }
 
     private void CalculateTorque()
@@ -91,6 +95,11 @@ public class ShipMovement : ShipSystem
         pitchInput = -vector.y;
         yawInput = vector.x;
         rollInput = -vector.z;
+    }
+
+    private void OnFuelEmpty()
+    {
+        hasFuel = false;
     }
 
     private void OnValidate() 

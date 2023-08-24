@@ -22,14 +22,16 @@ public struct ShipEvents
     public Action OnHyperdriveInput;
 
     // Movement Events
-    public Action OnThrustUsed;
+    public Action OnThrust;
     public Action OnHyperdriveActivated;
     public Action<float> OnFuelChanged;
+    public Action OnFuelEmpty;
+    public Action OnFuelRefilled;
 
     // Collision Events
     public Action<int> OnTakeDamage;
 
     // UI Events
 
-    
+
 }
