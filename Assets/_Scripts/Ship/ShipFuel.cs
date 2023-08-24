@@ -11,6 +11,12 @@ public class ShipFuel : ShipSystem
     protected override void Awake() 
     {
         base.Awake();
+
+    }
+
+    private void Start() 
+    {
+        RefillFuel();
     }
 
     private void OnEnable() 
@@ -33,5 +39,12 @@ public class ShipFuel : ShipSystem
         }
 
         ship.id.Events.OnFuelChanged?.Invoke(currentFuelLevel);
+    }
+
+    void RefillFuel()
+    {
+        currentFuelLevel = fuelCapacity;
+
+        ship.id.Events.OnFuelRefilled?.Invoke();
     }
 }

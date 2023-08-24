@@ -733,7 +733,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1134,13 +1134,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 869739841}
-  - component: {fileID: 869739840}
   - component: {fileID: 869739839}
-  - component: {fileID: 869739838}
   - component: {fileID: 869739837}
   - component: {fileID: 869739836}
-  - component: {fileID: 869739835}
+  - component: {fileID: 869739842}
   - component: {fileID: 869739834}
+  - component: {fileID: 869739835}
+  - component: {fileID: 869739840}
+  - component: {fileID: 869739838}
   - component: {fileID: 869739833}
   m_Layer: 0
   m_Name: Ship
@@ -1192,7 +1193,7 @@ TrailRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Time: 5
-  m_PreviewTimeScale: 1
+  m_PreviewTimeScale: 0
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -1274,9 +1275,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f552e03c10314094d8305d18ce073906, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canFireTorpedo: 1
+  NumTorpedoes: 50
+  weaponCooldown: 1.5
+  timeTillCanFire: 0
   torpedo: {fileID: 6818050606740257167, guid: b9878cd12c3ffe4428d855edc1349c08, type: 3}
-  NumTorpedoes: 5
-  weaponCooldown: 0
   firePoint: {fileID: 369487672}
 --- !u!114 &869739835
 MonoBehaviour:
@@ -1311,8 +1314,9 @@ MonoBehaviour:
   rb: {fileID: 869739838}
   mass: 1
   angularDrag: 1.5
-  thrustSpeed: 7.5
+  thrustSpeed: 10
   angularSpeed: 135
+  hasFuel: 0
   pitch: {x: 0, y: 0, z: 0}
   yaw: {x: 0, y: 0, z: 0}
   roll: {x: 0, y: 0, z: 0}
@@ -1371,6 +1375,7 @@ MonoBehaviour:
   rotationInput: {x: 0, y: 0, z: 0}
   thrustInput: 0
   fireInput: 0
+  hyperdriveInput: 0
 --- !u!114 &869739840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1421,6 +1426,21 @@ Transform:
   - {fileID: 1815064550}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &869739842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869739832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ea506e40a99764a9571395af6f1f76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuelCapacity: 500
+  currentFuelLevel: 500
+  flowrate: 1
 --- !u!1 &1038863779
 GameObject:
   m_ObjectHideFlags: 0
@@ -4251,7 +4271,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 10000
   field of view: 60.000004
   orthographic: 0
   orthographic size: 5

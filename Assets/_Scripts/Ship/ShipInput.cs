@@ -11,6 +11,7 @@ public class ShipInput : ShipSystem
     [SerializeField] private Vector3 rotationInput;
     [SerializeField] private bool thrustInput;
     [SerializeField] private bool fireInput;
+    [SerializeField] private bool hyperdriveInput;
     
     protected override void Awake() 
     {
@@ -25,6 +26,9 @@ public class ShipInput : ShipSystem
 
         ship.id.Events.OnTurnInput?.Invoke(rotationInput);
         ship.id.Events.OnThrustInput?.Invoke(thrustInput);
+        
+        if (hyperdriveInput)
+            ship.id.Events.OnHyperdriveInput?.Invoke();
 
         if (fireInput)
             ship.id.Events.OnFireInput?.Invoke();
@@ -35,5 +39,6 @@ public class ShipInput : ShipSystem
         rotationInput = input.actions["Rotation"].ReadValue<Vector3>();
         thrustInput = input.actions["Thrust"].IsPressed();
         fireInput = input.actions["Fire"].WasPressedThisFrame();
+        hyperdriveInput = input.actions["Hyperspace"].WasPressedThisFrame();
     }
 }

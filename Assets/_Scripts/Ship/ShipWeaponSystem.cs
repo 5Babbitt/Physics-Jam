@@ -2,11 +2,16 @@ using UnityEngine;
 
 public class ShipWeaponSystem : ShipSystem
 {
-    [SerializeField] private GameObject torpedo;
-    
-    public int NumTorpedoes;
-
+    [Header("Torpedo Settings")]
+    [SerializeField] bool canFireTorpedo = true;
+    [SerializeField] int NumTorpedoes;
     [SerializeField] private float weaponCooldown;
+    [SerializeField] private float timeTillCanFire;
+
+    [Space(5)]
+    [SerializeField] private GameObject torpedo;
+
+    [Header("General Settings")]
     [SerializeField] private Transform firePoint;
 
     protected override void Awake() 
@@ -26,9 +31,18 @@ public class ShipWeaponSystem : ShipSystem
         ship.id.Events.OnFireInput -= OnFireInput;
     }
 
+    private void Update() 
+    {
+        timeTillCanFire -= Time.deltaTime;
+
+        if (timeTillCanFire < 0) 
+            canFireTorpedo = true;
+    }
+
     private void OnFireInput()
     {
-        FireTorpedo();
+        if (canFireTorpedo)
+            FireTorpedo();
     }
 
     private void FireTorpedo()
@@ -39,5 +53,14 @@ public class ShipWeaponSystem : ShipSystem
             return;
         
         Instantiate(torpedo, firePoint.position, firePoint.rotation).GetComponent<Torpedo>();
+
+        ResetCooldown();
+    }
+
+    private void ResetCooldown()
+    {
+        timeTillCanFire = weaponCooldown;
+
+        canFireTorpedo = false;
     }
 }

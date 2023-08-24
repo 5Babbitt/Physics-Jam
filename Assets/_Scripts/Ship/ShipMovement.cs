@@ -38,12 +38,16 @@ public class ShipMovement : ShipSystem
     {
         ship.id.Events.OnTurnInput += OnTurnInput;
         ship.id.Events.OnThrustInput += OnThrustInput;
+        ship.id.Events.OnFuelEmpty += OnFuelEmpty;
+        ship.id.Events.OnFuelRefilled += OnFuelRefilled;
     }
 
     private void OnDisable() 
     {
         ship.id.Events.OnTurnInput -= OnTurnInput;
         ship.id.Events.OnThrustInput -= OnThrustInput;
+        ship.id.Events.OnFuelEmpty -= OnFuelEmpty;
+        ship.id.Events.OnFuelRefilled += OnFuelRefilled;
     }
 
     private void Update() 
@@ -53,7 +57,7 @@ public class ShipMovement : ShipSystem
 
     private void FixedUpdate()
     {
-        if (applyThrust)
+        if (applyThrust && hasFuel)
             ApplyThrust();
 
         ApplyTorque();
@@ -61,9 +65,6 @@ public class ShipMovement : ShipSystem
 
     private void ApplyThrust()
     {
-        if (!hasFuel)
-            return;
-        
         int thrustInput = applyThrust ? 1 : 0;
         
         rb.AddForce(thrustInput * mass * thrustSpeed * transform.forward);
@@ -102,11 +103,16 @@ public class ShipMovement : ShipSystem
         hasFuel = false;
     }
 
+    private void OnFuelRefilled()
+    {
+        hasFuel = true;
+    }
+
     private void OnValidate() 
     {
         rb = GetComponent<Rigidbody>();
         
-        rb.mass = mass;
+        mass = rb.mass;
         rb.angularDrag = angularDrag;
     }
 }
