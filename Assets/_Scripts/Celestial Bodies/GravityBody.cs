@@ -1,9 +1,11 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody), typeof(TrailRenderer))]
 public class GravityBody : MonoBehaviour
 {
     Rigidbody rb;
+    TrailRenderer trail;
+    [SerializeField] private bool trailsEnabled;
     
     public Rigidbody Rigidbody { get { return rb; } }
     
@@ -23,6 +25,7 @@ public class GravityBody : MonoBehaviour
     [Header("Ship Porperties")]
     public float mass;
 
+
     private void Awake()
     {
         currentVelocity = initialVelocity;
@@ -31,6 +34,10 @@ public class GravityBody : MonoBehaviour
 
         rb.useGravity = false;
         rb.velocity = currentVelocity;
+
+        trail = GetComponentInChildren<TrailRenderer>();
+
+        trail.enabled = trailsEnabled;
     }
 
     public void UpdateForce(GravityBody[] allBodies)
@@ -61,11 +68,13 @@ public class GravityBody : MonoBehaviour
     private void OnValidate() 
     {
         CalculateMass();
-        
         SetupRigidbody();
 
         if (meshHolder != null && bodyType != BodyTypes.ship)
             meshHolder.localScale = Vector3.one * radius * 2;
+
+        trail = GetComponent<TrailRenderer>();
+        trail.enabled = trailsEnabled;
     }
 
     private void CalculateMass()
@@ -91,7 +100,6 @@ public class GravityBody : MonoBehaviour
     {
         
     }
-
 }
 
 public enum BodyTypes

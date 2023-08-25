@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83657a3a685445b4296da86f4d5ea927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trailsEnabled: 0
   radius: 0
   surfaceGravity: 0
   initialVelocity: {x: 0, y: 0, z: 0}
@@ -161,7 +162,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1739795332435425498}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
