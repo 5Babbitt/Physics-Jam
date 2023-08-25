@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy: MonoBehaviour
+public class EnemyMovement : MonoBehaviour
 {
     public Transform playerSpaceship;
     public float moveSpeed = 10.0f;
@@ -54,12 +54,8 @@ public class Enemy: MonoBehaviour
         {
             transform.Translate(transform.forward * moveSpeed * Time.deltaTime);
         }
-
-      
         Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime);
-
-        
         if (Time.time - lastShootTime > shootingCooldown && distanceToPlayer < desiredDistance)
         {
             Shoot();
