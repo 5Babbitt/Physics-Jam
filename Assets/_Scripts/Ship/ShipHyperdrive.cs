@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ShipHyperdrive : ShipSystem
@@ -25,6 +24,8 @@ public class ShipHyperdrive : ShipSystem
 
     protected override void Awake() 
     {
+        base.Awake();
+        
         hyperspace = ship.id.HyperspaceLocation;
     }
     
@@ -117,6 +118,8 @@ public class ShipHyperdrive : ShipSystem
 
     public void TeleportRandom()
     { 
+        isWarping = true;
+        
         Vector3 position = Vector3.zero;
         
         willExplode = CheckIfExplode(); // Check if will explode on Reentry
@@ -132,7 +135,21 @@ public class ShipHyperdrive : ShipSystem
         
         numOfWarps++;
 
+        if (willExplode)
+        {
+            ship.id.Events.OnTakeDamage?.Invoke(100); 
+            Debug.Log("Exploded");
+        }
+        else
+        {
+            explosionProbability += probabilityIncrease * numOfWarps;
+            Debug.Log("Not Exploded");
+        }
+
         transform.position = position;
+
+        isWarping = false;
+        timeTillCanWarp = hyperdriveCooldown;
     }
 
     public void TeleportToPosition(Vector3 position, Vector3 velocity)
@@ -147,19 +164,17 @@ public class ShipHyperdrive : ShipSystem
 
     private bool TeleportLocationSafe(Vector3 position)
     {
-        Collider[] bodies = Physics.OverlapSphere(position, minSafetyDistance, avoidLayers);
+        Collider[] bodies = Physics.OverlapSphere(position, gravitySafeDistance, avoidLayers);
 
-        if (bodies.Length > 0)
-            return false;
-
-        bodies.AddRange(Physics.OverlapSphere(position, gravitySafeDistance, avoidLayers));
-        
         if (bodies.Length == 0)
             return true;
-        
+
         foreach (Collider b in bodies)
         {
             GravityBody body = b.transform.root.GetComponent<GravityBody>();
+
+            if (Vector3.Distance(position, body.transform.position) < minSafetyDistance)
+                return false;
 
             if (body.bodyType == BodyTypes.star || body.bodyType == BodyTypes.planet)
                 return false;

@@ -56,7 +56,7 @@ MonoBehaviour:
   - {fileID: 2693498458627142625, guid: 359c74b070e4bf3458e5fdf3f5064ba5, type: 3}
   - {fileID: 689569246659551620, guid: 8789d319242033b4d8fc72641773f9c6, type: 3}
   - {fileID: 3649767524089198433, guid: b5c0eec2546c1ea489e6c194167f8a40, type: 3}
-  numberOfAsteroids: 250
+  numberOfAsteroids: 150
   maxSpawnRadius: 1500
 --- !u!135 &1441613076838019735
 SphereCollider:
