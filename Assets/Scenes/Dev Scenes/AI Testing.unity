@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.040898476, g: 0.0070859194, b: 0.007987354, a: 1}
+  m_IndirectSpecularColor: {r: 0.027941808, g: 0.0048449277, b: 0.00543635, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -438,6 +438,24 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &301777155 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6671730385211691569, guid: 641aad5fce5dff54097f64a208716486,
+    type: 3}
+  m_PrefabInstance: {fileID: 1981122852}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83657a3a685445b4296da86f4d5ea927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &301777162 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3884717067130488439, guid: 641aad5fce5dff54097f64a208716486,
+    type: 3}
+  m_PrefabInstance: {fileID: 1981122852}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &347111710
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,7 +594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodies:
-  - {fileID: 0}
+  - {fileID: 301777155}
   - {fileID: 2130018719}
   Star: {fileID: 2130018719}
   asteroidPrefabs:
@@ -584,7 +602,7 @@ MonoBehaviour:
   - {fileID: 689569246659551620, guid: 8789d319242033b4d8fc72641773f9c6, type: 3}
   - {fileID: 3649767524089198433, guid: b5c0eec2546c1ea489e6c194167f8a40, type: 3}
   numberOfAsteroids: 150
-  asteroidSpawnRadius: 2250
+  maxSpawnRadius: 0
 --- !u!4 &660106864
 Transform:
   m_ObjectHideFlags: 0
@@ -784,7 +802,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1575897473}
+  - component: {fileID: 1575897475}
   - component: {fileID: 1575897474}
+  - component: {fileID: 1575897476}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -819,23 +839,49 @@ MonoBehaviour:
   m_GameObject: {fileID: 1575897471}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 686fa6a72ebbe4d44805ef4e89821083, type: 3}
+  m_Script: {fileID: 11500000, guid: aaff088ece94cdd43b10d458b7f8b96f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpaceship: {fileID: 0}
-  moveSpeed: 20
-  rollSpeed: 20
-  dodgeForce: 20
-  dodgeCooldown: 0
-  desiredDistance: 15
-  shootingCooldown: 20
-  maxHealth: 100
-  shootingVelocity: 2
+  player: {fileID: 301777162}
+  torpedoPrefab: {fileID: 6818050606740257167, guid: b9878cd12c3ffe4428d855edc1349c08,
+    type: 3}
   firePoints:
   - {fileID: 729978158}
   - {fileID: 1888423900}
-  bulletPrefab: {fileID: 6818050606740257167, guid: b9878cd12c3ffe4428d855edc1349c08,
-    type: 3}
+  fireCooldown: 10
+  torpedoSpeed: 20
+  detectionRange: 20
+--- !u!114 &1575897475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575897471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d20409b7dfa49a409be98e06f8a88b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 301777162}
+  chaseSpeed: 50
+  rotationSpeed: 10
+  retreatDuration: 5
+  retreatCooldown: 5
+  minimumDistance: 20
+--- !u!114 &1575897476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1575897471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a502c8a75023cb489568d729bca1431, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!1001 &1868656944
 PrefabInstance:
   m_ObjectHideFlags: 0
