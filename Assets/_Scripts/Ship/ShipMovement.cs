@@ -23,9 +23,9 @@ public class ShipMovement : ShipSystem
 
     [Header("Movement Values")]
     [SerializeField] private bool hasFuel = true;
-    [SerializeField] private Vector3 pitch;
-    [SerializeField] private Vector3 yaw;
-    [SerializeField] private Vector3 roll;
+    private Vector3 pitch;
+    private Vector3 yaw;
+    private Vector3 roll;
 
     protected override void Awake() 
     {
