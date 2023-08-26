@@ -143,11 +143,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 991251981051063838, guid: 641aad5fce5dff54097f64a208716486,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2342412500590786575, guid: 641aad5fce5dff54097f64a208716486,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3789215254122010701, guid: 641aad5fce5dff54097f64a208716486,
         type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1254484860}
+    - target: {fileID: 3789215254122010701, guid: 641aad5fce5dff54097f64a208716486,
+        type: 3}
+      propertyPath: m_VersionIndex
+      value: 5238
+      objectReference: {fileID: 0}
     - target: {fileID: 3884717067130488439, guid: 641aad5fce5dff54097f64a208716486,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -210,13 +225,8 @@ PrefabInstance:
       objectReference: {fileID: 1254484860}
     - target: {fileID: 8226990988442318706, guid: 641aad5fce5dff54097f64a208716486,
         type: 3}
-      propertyPath: NumTorpedoes
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 8226990988442318706, guid: 641aad5fce5dff54097f64a208716486,
-        type: 3}
-      propertyPath: weaponCooldown
-      value: 0.125
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8949369290907072316, guid: 641aad5fce5dff54097f64a208716486,
         type: 3}
@@ -228,6 +238,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 641aad5fce5dff54097f64a208716486, type: 3}
+--- !u!114 &1006631364 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6671730385211691569, guid: 641aad5fce5dff54097f64a208716486,
+    type: 3}
+  m_PrefabInstance: {fileID: 446301908}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83657a3a685445b4296da86f4d5ea927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1254484860
 Mesh:
   m_ObjectHideFlags: 0
@@ -406,6 +428,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: GravitySimulator
       objectReference: {fileID: 0}
+    - target: {fileID: 862990643400689352, guid: 3bd330d4ecf5ec546969f96aa594180b,
+        type: 3}
+      propertyPath: radius
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 1441613076838019735, guid: 3bd330d4ecf5ec546969f96aa594180b,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1500
+      objectReference: {fileID: 0}
     - target: {fileID: 2472512618876622429, guid: 3bd330d4ecf5ec546969f96aa594180b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -458,9 +490,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6860693286109826458, guid: 3bd330d4ecf5ec546969f96aa594180b,
         type: 3}
-      propertyPath: numberOfAsteroids
-      value: 150
+      propertyPath: maxSpawnRadius
+      value: 10000
       objectReference: {fileID: 0}
+    - target: {fileID: 6860693286109826458, guid: 3bd330d4ecf5ec546969f96aa594180b,
+        type: 3}
+      propertyPath: bodies.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6860693286109826458, guid: 3bd330d4ecf5ec546969f96aa594180b,
+        type: 3}
+      propertyPath: numberOfAsteroids
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6860693286109826458, guid: 3bd330d4ecf5ec546969f96aa594180b,
+        type: 3}
+      propertyPath: bodies.Array.data[0]
+      value: 
+      objectReference: {fileID: 1006631364}
     - target: {fileID: 6860693286109826458, guid: 3bd330d4ecf5ec546969f96aa594180b,
         type: 3}
       propertyPath: bodies.Array.data[1]

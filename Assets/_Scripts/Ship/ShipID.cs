@@ -34,6 +34,7 @@ public struct ShipEvents
 
     // Collision Events
     public Action<int> OnTakeDamage;
+    public Action OnShipExplode;
 
     // UI Events
 
