@@ -37,6 +37,9 @@ public class UniverseSimManager : Singleton<UniverseSimManager>
     private void OnValidate() 
     {
         SetupBodiesList();
+        field = GetComponent<FieldManager>();
+
+        maxSpawnRadius = field.Radius;
 
         foreach (var body in bodies)
         {

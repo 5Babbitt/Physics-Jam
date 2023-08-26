@@ -4,6 +4,7 @@ using UnityEngine;
 public class GravityBody : MonoBehaviour
 {
     Rigidbody rb;
+    UniverseSimManager sim;
     
     public Rigidbody Rigidbody { get { return rb; } }
     
@@ -28,16 +29,18 @@ public class GravityBody : MonoBehaviour
     {
         radius = rad;
         surfaceGravity = grav;
-        initialVelocity = Vector3.Cross(UniverseSimManager.Instance.Star.transform.position - transform.position, Vector3.up).normalized * initSpeed;
+        initialVelocity = Vector3.Cross(sim.Star.transform.position - transform.position, Vector3.up).normalized * initSpeed;
 
         bodyType = BodyTypes.asteroid;
     }
 
     private void Awake()
     {
+        sim = UniverseSimManager.Instance;
+        
         if (bodyType == BodyTypes.planet || bodyType == BodyTypes.asteroid)
-            initialVelocity = Vector3.Cross(UniverseSimManager.Instance.Star.transform.position - transform.position, Vector3.up).normalized * initialSpeed;
-            
+            initialVelocity = Vector3.Cross(sim.Star.transform.position - transform.position, Vector3.up).normalized * initialSpeed;
+
         currentVelocity = initialVelocity;
         
         SetupRigidbody();
@@ -76,11 +79,8 @@ public class GravityBody : MonoBehaviour
         CalculateMass();
         SetupRigidbody();
 
-        if (bodyType == BodyTypes.planet || bodyType == BodyTypes.asteroid)
-            initialVelocity = Vector3.Cross(UniverseSimManager.Instance.Star.transform.position - transform.position, Vector3.up).normalized * initialSpeed;
-
         if (meshHolder != null && bodyType != BodyTypes.ship)
-            meshHolder.localScale = Vector3.one * radius;
+            meshHolder.localScale = Vector3.one * radius * 2;
     }
 
     private void CalculateMass()
