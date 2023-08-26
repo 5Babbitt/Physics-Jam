@@ -14,12 +14,19 @@ public class ShipHyperdrive : ShipSystem
     [SerializeField] private float gravitySafeDistance = 50f;
     [SerializeField] private float hyperdriveCooldown = 30f;
     [SerializeField] private LayerMask avoidLayers;
+    [SerializeField] private Vector3 hyperspace;
 
     private float timeTillCanWarp;
+    private float timeTillWarp;
 
     [Header("Explosion Settings")]
     [SerializeField, Range(0f, 1f)] private float explosionProbability;
     [SerializeField, Range(0f, 0.1f)] private float probabilityIncrease;
+
+    protected override void Awake() 
+    {
+        hyperspace = ship.id.HyperspaceLocation;
+    }
     
     private void OnEnable() 
     {
@@ -33,18 +40,22 @@ public class ShipHyperdrive : ShipSystem
 
     private void Update() 
     {
-        timeTillCanWarp -= Time.deltaTime;
+        if (isWarping)
+            timeTillWarp -= Time.deltaTime;
+
+        if (!isWarping)
+            timeTillCanWarp -= Time.deltaTime;
     }
 
     private void OnHyperdriveInput()
     {
         if (timeTillCanWarp <= 0 && !isWarping)
         {
-            StartCoroutine(EnterHyperspace());
+            TeleportRandom();
         }
     }
 
-    public IEnumerator EnterHyperspace()
+    /* public IEnumerator EnterHyperspace()
     {
         isWarping = true;
         ship.id.Events.OnHyperdriveActivated?.Invoke();
@@ -79,20 +90,58 @@ public class ShipHyperdrive : ShipSystem
         }
 
         isWarping = false;
+    } */
+
+    public void EnterHyperspace()
+    {
+        isWarping = true;
+        ship.id.Events.OnHyperdriveActivated?.Invoke();
+        
+        // Teleport to Hyperspace Region
+        transform.position = hyperspace;
+
+        if (willExplode)
+        {
+            ship.id.Events.OnTakeDamage?.Invoke(100); 
+            Debug.Log("Exploded");
+        }
+        else
+        {
+            explosionProbability += probabilityIncrease * numOfWarps;
+            Debug.Log("Not Exploded");
+        }
+
+        isWarping = false;
+        timeTillCanWarp = hyperdriveCooldown;
     }
 
     public void TeleportRandom()
     { 
         Vector3 position = Vector3.zero;
+        
+        willExplode = CheckIfExplode(); // Check if will explode on Reentry
 
-        for (int i = 0; i < 50; i++)
+        for (int i = 0; i < 25; i++)
         {
             position = Random.insideUnitSphere * FieldManager.Instance.Radius;
-            Debug.Log($"{i}: Teleport to {position} is safe: {TeleportLocationSafe(position)}");
 
-            if (TeleportLocationSafe(position)) break;
-        }
+            bool isSafe = TeleportLocationSafe(position);
+
+            if (isSafe) break;
+        } 
         
+        numOfWarps++;
+
+        transform.position = position;
+    }
+
+    public void TeleportToPosition(Vector3 position, Vector3 velocity)
+    {
+
+    }
+
+    private void Teleport(Vector3 position)
+    {
         transform.position = position;
     }
 

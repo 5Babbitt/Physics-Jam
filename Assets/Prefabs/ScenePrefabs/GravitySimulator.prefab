@@ -51,7 +51,7 @@ MonoBehaviour:
   bodies:
   - {fileID: 0}
   - {fileID: 0}
-  Star: {fileID: 0}
+  Star: {fileID: 2510999593091706525}
   asteroidPrefabs:
   - {fileID: 2693498458627142625, guid: 359c74b070e4bf3458e5fdf3f5064ba5, type: 3}
   - {fileID: 689569246659551620, guid: 8789d319242033b4d8fc72641773f9c6, type: 3}

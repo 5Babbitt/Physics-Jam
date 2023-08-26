@@ -123,6 +123,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &93035448 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2510999593091706525, guid: 3bd330d4ecf5ec546969f96aa594180b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1669252205}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83657a3a685445b4296da86f4d5ea927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &446301908
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -196,6 +208,16 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1254484860}
+    - target: {fileID: 8226990988442318706, guid: 641aad5fce5dff54097f64a208716486,
+        type: 3}
+      propertyPath: NumTorpedoes
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 8226990988442318706, guid: 641aad5fce5dff54097f64a208716486,
+        type: 3}
+      propertyPath: weaponCooldown
+      value: 0.125
+      objectReference: {fileID: 0}
     - target: {fileID: 8949369290907072316, guid: 641aad5fce5dff54097f64a208716486,
         type: 3}
       propertyPath: m_Mesh
@@ -434,6 +456,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6860693286109826458, guid: 3bd330d4ecf5ec546969f96aa594180b,
+        type: 3}
+      propertyPath: numberOfAsteroids
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 6860693286109826458, guid: 3bd330d4ecf5ec546969f96aa594180b,
+        type: 3}
+      propertyPath: bodies.Array.data[1]
+      value: 
+      objectReference: {fileID: 93035448}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
