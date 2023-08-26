@@ -115,6 +115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1895198916548073258}
   - component: {fileID: 4257189082390456594}
+  - component: {fileID: 4943443162479836267}
   - component: {fileID: 5150016934711357983}
   - component: {fileID: 2534159493423729839}
   m_Layer: 0
@@ -159,6 +160,19 @@ MonoBehaviour:
   meshHolder: {fileID: 563879151784655032}
   bodyType: 2
   mass: 31999.998
+--- !u!114 &4943443162479836267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2693498458627142625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efab7df5582cb2f488d026554a5fc4ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
 --- !u!54 &5150016934711357983
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -194,7 +208,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2693498458627142625}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

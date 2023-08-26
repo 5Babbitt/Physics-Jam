@@ -20,6 +20,7 @@ public class ShipMovement : ShipSystem
     [Header("Speed Values")]
     [SerializeField] private float thrustSpeed;
     [SerializeField] private float angularSpeed;
+    [SerializeField] private AnimationCurve thrustFromDot;
 
     [Header("Movement Values")]
     [SerializeField] private bool hasFuel = true;
@@ -66,8 +67,10 @@ public class ShipMovement : ShipSystem
     private void ApplyThrust()
     {
         int thrustInput = applyThrust ? 1 : 0;
+
+        float directionMultiplier = thrustFromDot.Evaluate(Vector3.Dot(transform.forward, rb.velocity.normalized));
         
-        rb.AddForce(thrustInput * mass * thrustSpeed * transform.forward);
+        rb.AddForce(thrustInput * mass * thrustSpeed * directionMultiplier * transform.forward);
 
         ship.id.Events.OnThrust?.Invoke();
     }

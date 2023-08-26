@@ -11,6 +11,8 @@ public class Torpedo : MonoBehaviour
     [SerializeField] private float lifetime;
     [SerializeField] private float currentLifetime;
 
+    [SerializeField] private int damage = 10;
+
     private void Awake() 
     {
         rb = GetComponent<Rigidbody>();
@@ -32,5 +34,17 @@ public class Torpedo : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void OnCollisionEnter(Collision other) 
+    {
+        var destructible = other.gameObject.GetComponent<IDestructible>();
+
+        if (destructible == null)
+            return;
+
+        destructible.TakeDamage(damage);
+
+        Destroy(gameObject);
     }
 }

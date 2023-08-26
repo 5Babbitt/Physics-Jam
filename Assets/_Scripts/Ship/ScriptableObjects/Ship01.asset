@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Ship01
   m_EditorClassIdentifier: 
   Name: Ship 1
-  ShipColor: {r: 0, g: 0.8665147, b: 1, a: 1}
+  ShipColor: {r: 0, g: 1, b: 0.9802115, a: 1}
   HyperspaceLocation: {x: 5000, y: 0, z: 5000}
   spawnPosition: {x: 750, y: 0, z: 750}

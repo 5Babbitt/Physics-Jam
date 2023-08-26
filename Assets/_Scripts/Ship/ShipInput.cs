@@ -12,6 +12,8 @@ public class ShipInput : ShipSystem
     [SerializeField] private bool thrustInput;
     [SerializeField] private bool fireInput;
     [SerializeField] private bool hyperdriveInput;
+
+    public bool isPaused = false;
     
     protected override void Awake() 
     {
@@ -22,6 +24,9 @@ public class ShipInput : ShipSystem
     
     private void Update() 
     {
+        if (isPaused)
+            return;
+        
         GetInput();
 
         ship.id.Events.OnTurnInput?.Invoke(rotationInput);
