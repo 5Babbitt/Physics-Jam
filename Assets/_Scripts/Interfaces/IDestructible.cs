@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface IDestructible
 {
-    public void TakeDamage();
+    public void TakeDamage(int amount);
     public void Fracture();
 }

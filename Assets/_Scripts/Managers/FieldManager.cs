@@ -40,19 +40,20 @@ public class FieldManager : Singleton<FieldManager>
     {
         var body = other.transform.root.gameObject;
 
+        Vector3 newPosition = CalculateTeleportPointOnSphere(body.transform.position, centre);
+
         Debug.Log("object exited");
 
-        var ship = body.GetComponent<Ship>();
+        var ship = body.GetComponent<ShipHyperdrive>();
 
-        if (ship != null && ship.GetComponent<ShipHyperdrive>().isWarping == false)
+        if (ship != null && ship.isWarping == false)
         {    
             Debug.Log("ship exited");
             
-            // other.GetComponent<ShipHyperdrive>();
+            ship.FieldTeleport(newPosition, body.GetComponent<Rigidbody>().velocity);
 
-            StartCoroutine(TeleportShip(body, CalculateTeleportPointOnSphere(body.transform.position, centre)));
             return;
-        }
+        } 
         
         Teleport(body, CalculateTeleportPointOnSphere(body.transform.position, centre));
     }

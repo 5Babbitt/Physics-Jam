@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class ShipHyperdrive : ShipSystem
 {
+    Rigidbody rb;
+
     public bool isWarping;
     private bool willExplode;
     
@@ -16,7 +18,6 @@ public class ShipHyperdrive : ShipSystem
     [SerializeField] private Vector3 hyperspace;
 
     private float timeTillCanWarp;
-    private float timeTillWarp;
 
     [Header("Explosion Settings")]
     [SerializeField, Range(0f, 1f)] private float explosionProbability;
@@ -27,6 +28,7 @@ public class ShipHyperdrive : ShipSystem
         base.Awake();
         
         hyperspace = ship.id.HyperspaceLocation;
+        rb = GetComponent<Rigidbody>();
     }
     
     private void OnEnable() 
@@ -41,9 +43,6 @@ public class ShipHyperdrive : ShipSystem
 
     private void Update() 
     {
-        if (isWarping)
-            timeTillWarp -= Time.deltaTime;
-
         if (!isWarping)
             timeTillCanWarp -= Time.deltaTime;
     }
@@ -52,114 +51,87 @@ public class ShipHyperdrive : ShipSystem
     {
         if (timeTillCanWarp <= 0 && !isWarping)
         {
-            TeleportRandom();
+            StartCoroutine(TeleportRandom());
         }
     }
 
-    /* public IEnumerator EnterHyperspace()
+    private void EnterHyperspace()
     {
-        isWarping = true;
-        ship.id.Events.OnHyperdriveActivated?.Invoke();
-        
+        Debug.Log("Entered Hyperspace");
         // Teleport to Hyperspace Region
-        transform.position = ship.id.HyperspaceLocation;
-        //Debug.Log($"Entered Hyperspace: Ship Postition: {transform.position}");
-        
-        yield return new WaitForSeconds(timeInHyperspace);
-
-        // Check if will explode on Reentry
-        willExplode = CheckIfExplode();
-
-        numOfWarps++;
-
-        // Teleport
-        TeleportRandom();
-
-        Debug.Log($"Warped to {transform.position}");
-
-        timeTillCanWarp = hyperdriveCooldown;
-
-        if (willExplode)
-        {
-            ship.id.Events.OnTakeDamage?.Invoke(100); 
-            Debug.Log("Exploded");
-        }
-        else
-        {
-            explosionProbability += probabilityIncrease * numOfWarps;
-            Debug.Log("Not Exploded");
-        }
-
-        isWarping = false;
-    } */
-
-    public void EnterHyperspace()
-    {
-        isWarping = true;
-        ship.id.Events.OnHyperdriveActivated?.Invoke();
-        
-        // Teleport to Hyperspace Region
-        transform.position = hyperspace;
-
-        if (willExplode)
-        {
-            ship.id.Events.OnTakeDamage?.Invoke(100); 
-            Debug.Log("Exploded");
-        }
-        else
-        {
-            explosionProbability += probabilityIncrease * numOfWarps;
-            Debug.Log("Not Exploded");
-        }
-
-        isWarping = false;
-        timeTillCanWarp = hyperdriveCooldown;
+        rb.position = hyperspace;
     }
 
-    public void TeleportRandom()
+    private IEnumerator TeleportRandom()
     { 
+        Debug.Log($"Commencing Warp");
         isWarping = true;
+
+        ship.id.Events.OnHyperdriveActivated?.Invoke();
         
-        Vector3 position = Vector3.zero;
+        rb.velocity = Vector3.zero;
+        rb.isKinematic = true;
+        
+        EnterHyperspace();
+
+        yield return new WaitForSeconds(timeInHyperspace);
+        
+        Debug.Log("Exited Hyperspace");
         
         willExplode = CheckIfExplode(); // Check if will explode on Reentry
 
-        for (int i = 0; i < 25; i++)
-        {
-            position = Random.insideUnitSphere * FieldManager.Instance.Radius;
+        Vector3 position = CalculateRandomPosition();
 
-            bool isSafe = TeleportLocationSafe(position);
-
-            if (isSafe) break;
-        } 
-        
         numOfWarps++;
+        
+        Debug.Log("Exited Hyperspace");
 
+        Teleport(position);
+        
+        Debug.Log($"Teleported to position: {position}");
+
+        // Explosive
         if (willExplode)
         {
             ship.id.Events.OnTakeDamage?.Invoke(100); 
+            ship.id.Events.OnShipExplode?.Invoke();
             Debug.Log("Exploded");
         }
         else
         {
             explosionProbability += probabilityIncrease * numOfWarps;
             Debug.Log("Not Exploded");
-        }
+        } 
 
-        transform.position = position;
-
+        rb.isKinematic = false;
         isWarping = false;
         timeTillCanWarp = hyperdriveCooldown;
     }
 
-    public void TeleportToPosition(Vector3 position, Vector3 velocity)
+    public void FieldTeleport(Vector3 position, Vector3 vel)
     {
+        StartCoroutine(TeleportToPosition(position, vel));
+    }
 
+    private IEnumerator TeleportToPosition(Vector3 position, Vector3 velocity)
+    {
+        rb.velocity = Vector3.zero;
+        rb.isKinematic = true;
+        
+        EnterHyperspace();
+
+        yield return new WaitForSeconds(timeInHyperspace);
+        
+        Debug.Log("Exited Hyperspace");
+        
+        Teleport(position);
+        rb.isKinematic = false;
+        rb.velocity = velocity;
     }
 
     private void Teleport(Vector3 position)
     {
-        transform.position = position;
+        rb.position = position;
     }
 
     private bool TeleportLocationSafe(Vector3 position)
@@ -183,6 +155,28 @@ public class ShipHyperdrive : ShipSystem
         return true;
     }
 
+    private Vector3 CalculateRandomPosition()
+    {
+        Vector3 position = Vector3.zero;
+        
+        for (int i = 0; i < 25; i++)
+        {
+            position = Random.insideUnitSphere * FieldManager.Instance.Radius;
+
+            bool isSafe = TeleportLocationSafe(position);
+            Debug.Log($"{position} is safe: {isSafe}");
+
+            if (isSafe) break;
+        }  
+
+        return position;
+    }
+
+    private bool CheckIfExplode()
+    {
+        return Random.value < explosionProbability;
+    }
+
     private void OnDrawGizmosSelected() 
     {
         Gizmos.color = Color.red;
@@ -190,10 +184,5 @@ public class ShipHyperdrive : ShipSystem
 
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, gravitySafeDistance);
-    }
-
-    private bool CheckIfExplode()
-    {
-        return Random.value < explosionProbability;
     }
 }
