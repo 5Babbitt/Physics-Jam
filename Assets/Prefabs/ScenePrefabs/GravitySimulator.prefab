@@ -51,13 +51,13 @@ MonoBehaviour:
   bodies:
   - {fileID: 0}
   - {fileID: 0}
-  Star: {fileID: 2510999593091706525}
+  Star: {fileID: 0}
   asteroidPrefabs:
   - {fileID: 2693498458627142625, guid: 359c74b070e4bf3458e5fdf3f5064ba5, type: 3}
   - {fileID: 689569246659551620, guid: 8789d319242033b4d8fc72641773f9c6, type: 3}
   - {fileID: 3649767524089198433, guid: b5c0eec2546c1ea489e6c194167f8a40, type: 3}
-  numberOfAsteroids: 150
-  asteroidSpawnRadius: 2250
+  numberOfAsteroids: 250
+  maxSpawnRadius: 1500
 --- !u!135 &1441613076838019735
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -77,7 +77,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 2500
+  m_Radius: 1500
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &8864469129503632978
 Rigidbody:
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   centre: {x: 0, y: 0, z: 0}
-  radius: 2500
+  radius: 1500
 --- !u!1 &1245117760568245354
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,7 +146,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 1.8624285e-16, y: 0.0000004883301, z: -2.4296226e-10, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 150, y: 150, z: 150}
+  m_LocalScale: {x: 300, y: 300, z: 300}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6405409246109672683}
@@ -197,8 +197,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 0.67290825, b: 0, a: 1}
-  m_Intensity: 5000000
-  m_Range: 10000
+  m_Intensity: 10000000
+  m_Range: 2500
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -239,7 +239,7 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}

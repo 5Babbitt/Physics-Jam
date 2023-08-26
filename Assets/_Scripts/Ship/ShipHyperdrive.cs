@@ -51,7 +51,7 @@ public class ShipHyperdrive : ShipSystem
         
         // Teleport to Hyperspace Region
         transform.position = ship.id.HyperspaceLocation;
-        Debug.Log($"Entered Hyperspace: Ship Postition: {transform.position}");
+        //Debug.Log($"Entered Hyperspace: Ship Postition: {transform.position}");
         
         yield return new WaitForSeconds(timeInHyperspace);
 

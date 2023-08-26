@@ -10,6 +10,7 @@ public class ShipID : ScriptableObject
     public ShipEvents Events;
 
     public Vector3 HyperspaceLocation;
+    public Vector3 spawnPosition;
 }
 
 public struct ShipEvents
@@ -22,10 +23,14 @@ public struct ShipEvents
 
     // Movement Events
     public Action OnThrust;
-    public Action OnHyperdriveActivated;
     public Action<float> OnFuelChanged;
     public Action OnFuelEmpty;
     public Action OnFuelRefilled;
+
+    // Teleport Events
+    public Action OnHyperdriveActivated;
+    public Action OnEnteredHyperspace;
+    public Action OnExitHyperspace;
 
     // Collision Events
     public Action<int> OnTakeDamage;
