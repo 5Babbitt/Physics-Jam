@@ -45,7 +45,7 @@ public class EnemyMovement : MonoBehaviour
             DodgeRoll(directionToPlayer);
         }
 
-        if (distanceToPlayer < desiredDistance)
+        if (distanceToPlayer > desiredDistance)
         {
             Vector3 avoidDirection = -directionToPlayer.normalized;
             transform.Translate(avoidDirection * moveSpeed * Time.deltaTime);

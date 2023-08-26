@@ -178,12 +178,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83657a3a685445b4296da86f4d5ea927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trailsEnabled: 1
   radius: 1
   surfaceGravity: 20
   initialVelocity: {x: 0, y: 0, z: -7}
   meshHolder: {fileID: 8102141899687651894}
-  bodyType: 0
+  bodyType: 2
   mass: 20000
 --- !u!1 &7091765955932398978
 GameObject:
