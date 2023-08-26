@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: c3eb40b2fe83b7641912f94557953d01, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 29d2757ec5d41e6418e95d51746de733, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.006695817, g: 0.007958852, b: 0.004366971, a: 1}
+  m_IndirectSpecularColor: {r: 0.00079188007, g: 0.00082574686, b: 0.0012937819, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -143,6 +143,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 345879132635364623, guid: 641aad5fce5dff54097f64a208716486,
+        type: 3}
+      propertyPath: m_Mass
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 991251981051063838, guid: 641aad5fce5dff54097f64a208716486,
         type: 3}
       propertyPath: m_Enabled
@@ -217,6 +222,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Ship Player 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6671730385211691569, guid: 641aad5fce5dff54097f64a208716486,
+        type: 3}
+      propertyPath: mass
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6865552726831175633, guid: 641aad5fce5dff54097f64a208716486,
         type: 3}
@@ -491,7 +501,7 @@ PrefabInstance:
     - target: {fileID: 6860693286109826458, guid: 3bd330d4ecf5ec546969f96aa594180b,
         type: 3}
       propertyPath: maxSpawnRadius
-      value: 10000
+      value: 1500
       objectReference: {fileID: 0}
     - target: {fileID: 6860693286109826458, guid: 3bd330d4ecf5ec546969f96aa594180b,
         type: 3}
@@ -501,7 +511,7 @@ PrefabInstance:
     - target: {fileID: 6860693286109826458, guid: 3bd330d4ecf5ec546969f96aa594180b,
         type: 3}
       propertyPath: numberOfAsteroids
-      value: 50
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 6860693286109826458, guid: 3bd330d4ecf5ec546969f96aa594180b,
         type: 3}
