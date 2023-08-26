@@ -11,7 +11,7 @@ public class FieldManager : Singleton<FieldManager>
     private SphereCollider col;
 
     [SerializeField] private Vector3 centre = Vector3.zero;
-    [SerializeField] private float radius = 5000f;
+    [SerializeField] private float radius = 2500f;
     
     public float Radius { get { return radius; } }
     public Vector3 Centre { get { return centre; } }
@@ -47,15 +47,10 @@ public class FieldManager : Singleton<FieldManager>
         if (ship != null)
         {    
             Debug.Log("ship exited");
-
-            Rigidbody shipRB = body.GetComponent<Rigidbody>();
-            Debug.Log(shipRB.velocity);
             
             // other.GetComponent<ShipHyperdrive>();
-            Teleport(shipRB.gameObject, Vector3.one * 10000);
-            
-            shipRB.velocity = Vector3.zero;
-            TeleportShip(body, CalculateTeleportPointOnSphere(body.transform.position, centre), shipRB.velocity);
+
+            StartCoroutine(TeleportShip(body, CalculateTeleportPointOnSphere(body.transform.position, centre)));
             return;
         }
         
@@ -69,9 +64,15 @@ public class FieldManager : Singleton<FieldManager>
         return centre - heading;
     }
 
-    private IEnumerator TeleportShip(GameObject body, Vector3 position, Vector3 velocity)
+    private IEnumerator TeleportShip(GameObject body, Vector3 position)
     {
+        Rigidbody shipRB = body.GetComponent<Rigidbody>();
+        Vector3 velocity = shipRB.velocity;
+        
         Debug.Log("Ship Teleport Commencing");
+        Teleport(body, Vector3.one * 10000);
+            
+        shipRB.velocity = Vector3.zero;
         
         yield return new WaitForSeconds(3f);
 
@@ -89,14 +90,21 @@ public class FieldManager : Singleton<FieldManager>
         body.transform.position = position;
 
         if (trail != null)
-            trail.emitting = true;
+            StartCoroutine(EnableTrailRenderer(trail));
     }   
 
     private void Teleport(GameObject body, Vector3 position, Vector3 velocity)
     {
         body.transform.position = position;
-        body.GetComponent<Rigidbody>().velocity = velocity;
+        body.GetComponent<Rigidbody>().velocity = velocity / 2;
     } 
+
+    private IEnumerator EnableTrailRenderer(TrailRenderer trail)
+    {
+        yield return new WaitForSeconds(3.5f);
+
+        trail.emitting = true;
+    }
 
     private void OnDrawGizmos() 
     {
