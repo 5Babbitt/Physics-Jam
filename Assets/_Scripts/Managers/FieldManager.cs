@@ -44,7 +44,7 @@ public class FieldManager : Singleton<FieldManager>
 
         var ship = body.GetComponent<Ship>();
 
-        if (ship != null)
+        if (ship != null && ship.GetComponent<ShipHyperdrive>().isWarping == false)
         {    
             Debug.Log("ship exited");
             
@@ -82,28 +82,13 @@ public class FieldManager : Singleton<FieldManager>
 
     private void Teleport(GameObject body, Vector3 position)
     {
-        var trail = body.GetComponentInChildren<TrailRenderer>();
-
-        if (trail != null)
-            trail.emitting = false;
-
         body.transform.position = position;
-
-        if (trail != null)
-            StartCoroutine(EnableTrailRenderer(trail));
     }   
 
     private void Teleport(GameObject body, Vector3 position, Vector3 velocity)
     {
         body.transform.position = position;
         body.GetComponent<Rigidbody>().velocity = velocity / 2;
-    } 
-
-    private IEnumerator EnableTrailRenderer(TrailRenderer trail)
-    {
-        yield return new WaitForSeconds(3.5f);
-
-        trail.emitting = true;
     }
 
     private void OnDrawGizmos() 

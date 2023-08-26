@@ -4,14 +4,64 @@ using QFSW.QC;
 
 public class UniverseSimManager : Singleton<UniverseSimManager>
 {
+    private FieldManager field; 
+    
     [SerializeField] List<GravityBody> bodies = new List<GravityBody>();
     [field:SerializeField] public Universe universalValues { get; private set; }
 
-    [SerializeField] private GameObject gravityBodyPrefab; 
+    public GravityBody Star;
+
+    [SerializeField] private GameObject[] asteroidPrefabs; 
+
+    public int numberOfAsteroids;
+    public float asteroidSpawnRadius;  
 
     protected override void Awake() 
     {
+        base.Awake();
+
+        foreach (var body in bodies)
+        {
+            if (body.bodyType == BodyTypes.star)
+                Star = body;
+            
+            break;
+        }
+        
         SetupBodiesList();
+    }
+
+    private void OnValidate() 
+    {
+        SetupBodiesList();
+
+        foreach (var body in bodies)
+        {
+            if (body.bodyType == BodyTypes.star)
+                Star = body;
+            
+            break;
+        }
+    }
+
+    private void Start()
+    {
+        SpawnAsteroids();
+    }
+
+    private void SpawnAsteroids()
+    {
+        for (int i = 0; i < numberOfAsteroids; i++)
+        {
+            Vector3 randomPosition = Random.insideUnitSphere * asteroidSpawnRadius;
+
+            Quaternion randomRotation = Quaternion.Euler(Random.Range(0f, 360f), Random.Range(0f, 360f), Random.Range(0f, 360f));
+
+            float randomRadius = Random.Range(0.25f, 2.5f);
+            //GameObject spawnedItem = Instantiate(selectedPrefab, randomPosition, randomRotation);
+
+            SpawnAsteroid(randomPosition, randomRotation, Random.Range(50f, 75f), randomRadius);
+        }
     }
 
     private void OnEnable() 
@@ -67,13 +117,12 @@ public class UniverseSimManager : Singleton<UniverseSimManager>
     }
 
     [Command]
-    public void SpawnGravityObject(Vector3 position, Vector3 initialVelocity, float mass = 10f)
+    public void SpawnAsteroid(Vector3 position, Quaternion rotation, float initialSpeed, float radius = 1.5f, float surfaceGrav = 5f)
     {
-        var newBody = Instantiate(gravityBodyPrefab, position, Quaternion.identity).GetComponent<GravityBody>();
-        newBody.mass = mass;
-        var vel = initialVelocity;
-        
-        PhysicsHelper.ApplyForceToReachVelocity(newBody.Rigidbody, vel, newBody.mass, ForceMode.Impulse);
+        var newBody = Instantiate(asteroidPrefabs[Random.Range(0, asteroidPrefabs.Length)], position, rotation, this.transform).GetComponent<GravityBody>();
+        newBody.transform.root.parent = transform;
+
+        newBody.InitAsteroid(radius, surfaceGrav, initialSpeed);
 
         AddNewBody(newBody);
     }

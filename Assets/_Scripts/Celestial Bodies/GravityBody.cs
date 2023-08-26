@@ -11,6 +11,7 @@ public class GravityBody : MonoBehaviour
     [Header("General Properties")]
     [Range(1f, 200f)] public float radius = 5f;
     public float surfaceGravity = 1;
+    public float initialSpeed = 15f;
     public Vector3 initialVelocity;
 
     private Vector3 currentVelocity;
@@ -23,8 +24,20 @@ public class GravityBody : MonoBehaviour
     [Header("Ship Porperties")]
     public float mass;
 
+    public void InitAsteroid(float rad, float grav, float initSpeed)
+    {
+        radius = rad;
+        surfaceGravity = grav;
+        initialVelocity = Vector3.Cross(UniverseSimManager.Instance.Star.transform.position - transform.position, Vector3.up).normalized * initSpeed;
+
+        bodyType = BodyTypes.asteroid;
+    }
+
     private void Awake()
     {
+        if (bodyType == BodyTypes.planet || bodyType == BodyTypes.asteroid)
+            initialVelocity = Vector3.Cross(UniverseSimManager.Instance.Star.transform.position - transform.position, Vector3.up).normalized * initialSpeed;
+            
         currentVelocity = initialVelocity;
         
         SetupRigidbody();
@@ -63,8 +76,11 @@ public class GravityBody : MonoBehaviour
         CalculateMass();
         SetupRigidbody();
 
+        if (bodyType == BodyTypes.planet || bodyType == BodyTypes.asteroid)
+            initialVelocity = Vector3.Cross(UniverseSimManager.Instance.Star.transform.position - transform.position, Vector3.up).normalized * initialSpeed;
+
         if (meshHolder != null && bodyType != BodyTypes.ship)
-            meshHolder.localScale = Vector3.one * radius * 2;
+            meshHolder.localScale = Vector3.one * radius;
     }
 
     private void CalculateMass()
