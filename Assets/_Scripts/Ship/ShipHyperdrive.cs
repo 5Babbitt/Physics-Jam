@@ -51,20 +51,19 @@ public class ShipHyperdrive : ShipSystem
         
         // Teleport to Hyperspace Region
         transform.position = ship.id.HyperspaceLocation;
+        Debug.Log($"Entered Hyperspace: Ship Postition: {transform.position}");
+        
+        yield return new WaitForSeconds(timeInHyperspace);
 
         // Check if will explode on Reentry
         willExplode = CheckIfExplode();
-        
-        Debug.Log("Entered Hyperspace");
-        
-        yield return new WaitForSeconds(timeInHyperspace);
 
         numOfWarps++;
 
         // Teleport
         TeleportRandom();
 
-        Debug.Log("Warped");
+        Debug.Log($"Warped to {transform.position}");
 
         timeTillCanWarp = hyperdriveCooldown;
 
@@ -101,11 +100,6 @@ public class ShipHyperdrive : ShipSystem
     {
         Collider[] bodies = Physics.OverlapSphere(position, minSafetyDistance, avoidLayers);
 
-        Debug.Log(bodies);
-
-        if (bodies.Length == 0)
-            return true;
-
         if (bodies.Length > 0)
             return false;
 
@@ -117,8 +111,6 @@ public class ShipHyperdrive : ShipSystem
         foreach (Collider b in bodies)
         {
             GravityBody body = b.transform.root.GetComponent<GravityBody>();
-
-            if (body == null) continue;
 
             if (body.bodyType == BodyTypes.star || body.bodyType == BodyTypes.planet)
                 return false;
