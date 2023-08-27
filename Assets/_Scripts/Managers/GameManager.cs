@@ -10,22 +10,27 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-     if (GameObject.FindGameObjectsWithTag("Enemy") == null)
-     {
-      EnemyDies();
-     }
-     if (GameObject.FindGameObjectsWithTag("Ship") == null)
-     {
-        ShipDies();
-     }
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject[] ships = GameObject.FindGameObjectsWithTag("Ship");
+
+        if (enemies.Length == 0)
+        {
+            EnemyDies();
+        }
+
+        if (ships.Length == 0)
+        {
+            ShipDies();
+        }
     }
 
     void ShipDies()
     {
-    SceneManager.LoadSceneAsync(4);
+        SceneManager.LoadScene(4);
     }
+
     void EnemyDies()
     {
-    SceneManager.LoadSceneAsync(3);
+        SceneManager.LoadScene(3);
     }
 }

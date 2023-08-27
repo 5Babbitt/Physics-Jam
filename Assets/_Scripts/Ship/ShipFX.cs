@@ -6,14 +6,20 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class ShipFX : ShipSystem
 {
-    [SerializeField] private AudioClip Explosion,Thrust,shoot;
-    [SerializeField] private AudioSource source;
+    [SerializeField] private AudioClip explosion;
+    [SerializeField] private AudioClip thrust;
+    [SerializeField] private AudioClip shoot;
+    private AudioSource explosionSource;
+    private AudioSource thrustSource;
+    private AudioSource shootSource;
 
     protected override void Awake()
     {
         base.Awake();
 
-        source = GetComponent<AudioSource>();
+        explosionSource = gameObject.AddComponent<AudioSource>();
+        thrustSource = gameObject.AddComponent<AudioSource>();
+        shootSource = gameObject.AddComponent<AudioSource>();
     }
 
     private void OnEnable() 
@@ -38,34 +44,37 @@ public class ShipFX : ShipSystem
 
     private void OnExitHyperspace()
     {
-        throw new NotImplementedException();
+        
     }
 
     private void OnEnteredHyperspace()
     {
-        throw new NotImplementedException();
+      
     }
 
     private void OnTakeDamage(int value)
     {
-        
+      
+    }
+
+    private void PlaySound(AudioSource source, AudioClip clip)
+    {
+        source.clip = clip;
+        source.Play();
     }
 
     private void OnShipExplode()
     {
-        source.clip = Explosion;
-        source.Play();
+        PlaySound(explosionSource, explosion);
     }
 
     private void OnThrust()
     {
-        source.clip = Thrust;
-        source.Play();
+        PlaySound(thrustSource, thrust);
     }
 
     private void OnTorpedoFired()
     {
-        source.clip = shoot;
-        source.Play();
+        PlaySound(shootSource, shoot);
     }
 }

@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/AIGameScene.unity
     guid: ec30f8481d34f8d4dab5b626349cf7c7
   - enabled: 1
-    path: Assets/Scenes/MultiplayerGameScene.unity
+    path: Assets/Scenes/Settings.unity
     guid: 2358db8b01eabce4789763dc7182b8fd
   - enabled: 1
     path: Assets/Scenes/Credits.unity
