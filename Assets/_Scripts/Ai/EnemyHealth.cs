@@ -14,7 +14,8 @@ public class EnemyHealth : MonoBehaviour, IDestructible
          currentHealth -= damageAmount;
 
             if (currentHealth <= 0)
-            {
+            {   
+                Fracture();
                 
                 Destroy(gameObject);
             }
@@ -22,6 +23,6 @@ public class EnemyHealth : MonoBehaviour, IDestructible
         
         public void Fracture()
         {
-            Instantiate(explosion);
+            Instantiate(explosion, transform.position, Quaternion.identity);
         }
     }

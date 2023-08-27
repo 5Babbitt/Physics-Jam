@@ -11,10 +11,28 @@ public class ShipExplosion : MonoBehaviour
     
     private AudioSource explosionSource;
 
+    private float lifetime = 2f;
+    private float currentLife;
+
     private void Awake() 
     {
-        explosionSource = gameObject.AddComponent<AudioSource>();
+        explosionSource = gameObject.GetComponent<AudioSource>();
         
         explosionSource.PlayOneShot(explosion);
+
+        explosionEffect.Play();
+    }
+
+    private void Start() 
+    {
+        currentLife = lifetime;
+    }
+
+    private void Update() 
+    {
+        lifetime -= Time.deltaTime;
+
+        if (lifetime < 0)
+            Destroy(gameObject);
     }
 }

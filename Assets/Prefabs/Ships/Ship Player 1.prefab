@@ -381,7 +381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3549f7648bb7fd42a25b56f292e8257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 100
   currentHealth: 50
 --- !u!114 &2342412500590786575
 MonoBehaviour:
@@ -399,7 +399,7 @@ MonoBehaviour:
   mass: 25
   angularDrag: 1.5
   thrustSpeed: 10
-  angularSpeed: 1800
+  angularSpeed: 2400
   thrustFromDot:
     serializedVersion: 2
     m_Curve:
@@ -486,7 +486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canFireTorpedo: 1
-  NumTorpedoes: 100
+  NumTorpedoes: 500
   weaponCooldown: 0.125
   timeTillCanFire: 0
   torpedo: {fileID: 6818050606740257167, guid: b9878cd12c3ffe4428d855edc1349c08, type: 3}
@@ -613,7 +613,7 @@ TrailRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Time: 2.5
-  m_PreviewTimeScale: 0
+  m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -693,9 +693,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 0f9e7847a3e0fad488777381d6a4d576, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.1
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 0
   Mute: 0

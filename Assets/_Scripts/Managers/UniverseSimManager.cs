@@ -63,7 +63,7 @@ public class UniverseSimManager : Singleton<UniverseSimManager>
 
             Quaternion randomRotation = Quaternion.Euler(Random.Range(0f, 360f), Random.Range(0f, 360f), Random.Range(0f, 360f));
 
-            float randomRadius = Random.Range(10f, 200f);
+            float randomRadius = Random.Range(75f, 250f);
             //GameObject spawnedItem = Instantiate(selectedPrefab, randomPosition, randomRotation);
 
             SpawnAsteroid(randomPosition, randomRotation, Random.Range(50f, 75f), randomRadius);
@@ -125,7 +125,7 @@ public class UniverseSimManager : Singleton<UniverseSimManager>
     [Command]
     public void SpawnAsteroid(Vector3 position, Quaternion rotation, float initialSpeed, float radius = 10f, float surfaceGrav = 5f)
     {
-        var newBody = Instantiate(asteroidPrefabs[Random.Range(0, asteroidPrefabs.Length)], position, rotation, this.transform).GetComponent<GravityBody>();
+        var newBody = Instantiate(asteroidPrefabs[Random.Range(0, asteroidPrefabs.Length)], position, rotation, transform).GetComponent<GravityBody>();
         newBody.transform.root.parent = transform;
 
         newBody.InitAsteroid(radius, surfaceGrav, initialSpeed);

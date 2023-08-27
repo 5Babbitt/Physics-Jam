@@ -21,6 +21,7 @@ public class ShipFX : ShipSystem
         shootSource = gameObject.AddComponent<AudioSource>();
 
         thrustSource.clip = thrust;
+        shootSource.volume = 0.05f;
     }
 
     private void OnEnable() 
@@ -80,7 +81,7 @@ public class ShipFX : ShipSystem
 
     private void OnShipExplode()
     {
-        Instantiate(explosion);
+        Instantiate(explosion, transform.position, Quaternion.identity);
     }
 
     private void OnThrust(bool value)

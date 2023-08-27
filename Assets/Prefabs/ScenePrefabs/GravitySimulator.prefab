@@ -58,7 +58,7 @@ MonoBehaviour:
   - {fileID: 4061634263492806842, guid: b5c0eec2546c1ea489e6c194167f8a40, type: 3}
   - {fileID: 3364937997013638345, guid: 734328c33c538b54face9d930ff1933f, type: 3}
   - {fileID: 7448126603835806344, guid: bae1991958f1f0e49b6c7b6442d7101f, type: 3}
-  numberOfAsteroids: 100
+  numberOfAsteroids: 125
   maxSpawnRadius: 1500
 --- !u!135 &1441613076838019735
 SphereCollider:
@@ -148,7 +148,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 1.8624285e-16, y: 0.0000004883301, z: -2.4296226e-10, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 300, y: 300, z: 300}
+  m_LocalScale: {x: 400, y: 400, z: 400}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6405409246109672683}
@@ -317,7 +317,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2623139191632568722}
   serializedVersion: 4
-  m_Mass: 562500000
+  m_Mass: 799999940
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -348,13 +348,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83657a3a685445b4296da86f4d5ea927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 150
-  surfaceGravity: 25
-  initialSpeed: 15
+  radius: 200
+  surfaceGravity: 20
+  initialSpeed: 0
   initialVelocity: {x: 0, y: 0, z: 0}
   meshHolder: {fileID: 409448309789238233}
   bodyType: 0
-  mass: 562500000
+  mass: 799999940
 --- !u!96 &4108192267840208235
 TrailRenderer:
   serializedVersion: 3

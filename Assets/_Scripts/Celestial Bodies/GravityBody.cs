@@ -32,6 +32,12 @@ public class GravityBody : MonoBehaviour
         initialVelocity = Vector3.Cross(sim.Star.transform.position - transform.position, Vector3.up).normalized * initSpeed;
 
         bodyType = BodyTypes.asteroid;
+
+        CalculateMass();
+        SetupRigidbody();
+
+        if (meshHolder != null && bodyType != BodyTypes.ship)
+            meshHolder.localScale = Vector3.one * radius * 2;
     }
 
     private void Awake()

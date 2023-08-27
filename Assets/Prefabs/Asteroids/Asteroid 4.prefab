@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8641345552232866782}
   - component: {fileID: 7127768762681271485}
   - component: {fileID: 4759130653796199569}
+  - component: {fileID: -3345424866719315396}
   m_Layer: 0
   m_Name: Asteroid 4
   m_TagString: Untagged
@@ -47,13 +48,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83657a3a685445b4296da86f4d5ea927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 1
+  radius: 50
   surfaceGravity: 1.5
   initialSpeed: 15
   initialVelocity: {x: 0, y: 0, z: -15}
   meshHolder: {fileID: 6284805676996310629}
   bodyType: 2
-  mass: 1499.9999
+  mass: 3749999.8
 --- !u!54 &7127768762681271485
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -62,7 +63,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3364937997013638345}
   serializedVersion: 4
-  m_Mass: 1499.9999
+  m_Mass: 3749999.8
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -194,6 +195,22 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!114 &-3345424866719315396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3364937997013638345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efab7df5582cb2f488d026554a5fc4ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  body: {fileID: 8234430211299818136, guid: 359c74b070e4bf3458e5fdf3f5064ba5, type: 3}
+  explosion: {fileID: 5532994289700693369, guid: 600042653b568d7489495880a698f0cd,
+    type: 3}
 --- !u!1 &7143996381777437491
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,7 +342,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4846242020936729442}

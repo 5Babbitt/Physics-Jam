@@ -117,6 +117,8 @@ GameObject:
   - component: {fileID: 3743843619663173707}
   - component: {fileID: 4856136234448364928}
   - component: {fileID: 3944185413777648032}
+  - component: {fileID: -3615312765608473671}
+  - component: {fileID: 6087879486595983800}
   m_Layer: 0
   m_Name: Asteroid 5
   m_TagString: Untagged
@@ -152,13 +154,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83657a3a685445b4296da86f4d5ea927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 1
+  radius: 50
   surfaceGravity: 1.5
   initialSpeed: 15
   initialVelocity: {x: 0, y: 0, z: -15}
   meshHolder: {fileID: 1220672584189012968}
   bodyType: 2
-  mass: 1499.9999
+  mass: 3749999.8
 --- !u!54 &4856136234448364928
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -167,7 +169,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7448126603835806344}
   serializedVersion: 4
-  m_Mass: 1499.9999
+  m_Mass: 3749999.8
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -299,6 +301,37 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!114 &-3615312765608473671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7448126603835806344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efab7df5582cb2f488d026554a5fc4ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 10
+  body: {fileID: 8234430211299818136, guid: 359c74b070e4bf3458e5fdf3f5064ba5, type: 3}
+  explosion: {fileID: 5532994289700693369, guid: 600042653b568d7489495880a698f0cd,
+    type: 3}
+--- !u!114 &6087879486595983800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7448126603835806344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efab7df5582cb2f488d026554a5fc4ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 5
+  body: {fileID: 0}
+  explosion: {fileID: 0}
 --- !u!1 &8379985169228170672
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,7 +358,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1273969296305118757}

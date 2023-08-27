@@ -5203,7 +5203,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  explosion: {fileID: 0}
+  explosion: {fileID: 5532994289700693369, guid: 600042653b568d7489495880a698f0cd,
+    type: 3}
 --- !u!54 &2112605715920965921
 Rigidbody:
   m_ObjectHideFlags: 0
