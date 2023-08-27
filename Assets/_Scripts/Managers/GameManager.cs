@@ -5,42 +5,27 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public string sceneOnTag1Destroyed = "SceneTag1Destroyed"; 
-    public string sceneOnTag2Destroyed = "SceneTag2Destroyed"; 
+    public GameObject Ship;
+    public GameObject Enemy;
 
-    private void Update()
+    void Update()
     {
-       
-        GameObject[] tag1Objects = GameObject.FindGameObjectsWithTag("Ship");
-        GameObject[] Enemy = GameObject.FindGameObjectsWithTag("Enemy");
-
-       
-        foreach (GameObject obj in tag1Objects)
-        {
-            if (obj == null)
-            {
-                LoadSceneOnTag1Destroyed();
-                break; 
-            }
-        }
-
-        foreach (GameObject obj in Enemy)
-        {
-            if (obj == null)
-            {
-                LoadSceneOnTag2Destroyed();
-                break; 
-            }
-        }
+     if (GameObject.FindGameObjectsWithTag("Enemy") == null)
+     {
+      EnemyDies();
+     }
+     if (GameObject.FindGameObjectsWithTag("Ship") == null)
+     {
+        ShipDies();
+     }
     }
 
-    private void LoadSceneOnTag1Destroyed()
+    void ShipDies()
     {
-        SceneManager.LoadSceneAsync(4);
+    SceneManager.LoadSceneAsync(4);
     }
-
-    private void LoadSceneOnTag2Destroyed()
+    void EnemyDies()
     {
-        SceneManager.LoadSceneAsync(3);
+    SceneManager.LoadSceneAsync(3);
     }
 }

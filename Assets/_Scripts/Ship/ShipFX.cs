@@ -6,7 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class ShipFX : ShipSystem
 {
-    [SerializeField] private AudioClip[] audioClips;
+    [SerializeField] private AudioClip Explosion,Thrust,shoot;
     [SerializeField] private AudioSource source;
 
     protected override void Awake()
@@ -53,16 +53,19 @@ public class ShipFX : ShipSystem
 
     private void OnShipExplode()
     {
-        
+        source.clip = Explosion;
+        source.Play();
     }
 
     private void OnThrust()
     {
-        
+        source.clip = Thrust;
+        source.Play();
     }
 
     private void OnTorpedoFired()
     {
-        
+        source.clip = shoot;
+        source.Play();
     }
 }

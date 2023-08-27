@@ -6,6 +6,8 @@ public class EnemyFire : MonoBehaviour
 {
     public GameObject player; 
     public GameObject torpedoPrefab; 
+    [SerializeField] private AudioSource source;
+    [SerializeField] private AudioClip shoot;
     public Transform[] firePoints; 
     public float fireCooldown; 
     public float torpedoSpeed; 
@@ -15,7 +17,7 @@ public class EnemyFire : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Ship");
     }
 
     private void Update()
@@ -43,9 +45,16 @@ public class EnemyFire : MonoBehaviour
             Rigidbody torpedoRigidbody = torpedo.GetComponent<Rigidbody>();
             torpedoRigidbody.velocity = torpedo.transform.forward * torpedoSpeed;
             Destroy(torpedo, 10.0f);
+            OnTorpedoFired();
+   
         }
 
         yield return new WaitForSeconds(fireCooldown);
         canFire = true;
+    }
+      private void OnTorpedoFired()
+    {
+        source.clip = shoot;
+        source.Play();
     }
 }
