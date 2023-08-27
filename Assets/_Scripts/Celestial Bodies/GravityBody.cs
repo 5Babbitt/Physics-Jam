@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody), typeof(TrailRenderer))]
+[RequireComponent(typeof(Rigidbody))]
 public class GravityBody : MonoBehaviour
 {
     Rigidbody rb;

@@ -17,15 +17,15 @@ public class ShipExplosion : MonoBehaviour
     private void Awake() 
     {
         explosionSource = gameObject.GetComponent<AudioSource>();
-        
-        explosionSource.PlayOneShot(explosion);
-
-        explosionEffect.Play();
     }
 
     private void Start() 
     {
         currentLife = lifetime;
+        
+        explosionSource.PlayOneShot(explosion);
+
+        explosionEffect.Play();
     }
 
     private void Update() 

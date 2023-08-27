@@ -231,9 +231,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2472512618876622429}
   - component: {fileID: 6860693286109826458}
+  - component: {fileID: 862990643400689352}
   - component: {fileID: 1441613076838019735}
   - component: {fileID: 8864469129503632978}
-  - component: {fileID: 862990643400689352}
   m_Layer: 6
   m_Name: GravitySimulator
   m_TagString: GameController
@@ -280,8 +280,22 @@ MonoBehaviour:
   - {fileID: 4061634263492806842, guid: b5c0eec2546c1ea489e6c194167f8a40, type: 3}
   - {fileID: 3364937997013638345, guid: 734328c33c538b54face9d930ff1933f, type: 3}
   - {fileID: 7448126603835806344, guid: bae1991958f1f0e49b6c7b6442d7101f, type: 3}
-  numberOfAsteroids: 125
+  numberOfAsteroids: 110
   maxSpawnRadius: 1500
+--- !u!114 &862990643400689352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681474695783819066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af34bb2e2828f8d45bc3001090404ef8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  centre: {x: 0, y: 0, z: 0}
+  radius: 1500
 --- !u!135 &1441613076838019735
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -330,20 +344,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &862990643400689352
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 681474695783819066}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af34bb2e2828f8d45bc3001090404ef8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  centre: {x: 0, y: 0, z: 0}
-  radius: 1500
 --- !u!1 &1060956458325337113
 GameObject:
   m_ObjectHideFlags: 0

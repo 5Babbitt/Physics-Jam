@@ -49,14 +49,14 @@ public class ShipFX : ShipSystem
         
     }
 
-    private void OnExitHyperspace()
-    {
-        
-    }
-
     private void OnEnteredHyperspace()
     {
       
+    }
+
+    private void OnExitHyperspace()
+    {
+        
     }
 
     private void OnTakeDamage(int value)

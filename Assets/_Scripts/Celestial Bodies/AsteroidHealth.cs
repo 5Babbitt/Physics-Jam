@@ -35,15 +35,18 @@ public class AsteroidHealth : MonoBehaviour, IDestructible
         Debug.Log("Asteroid Destroyed");
         Universe.OnGravityBodyDestroyed?.Invoke(GetComponent<GravityBody>());
 
-        if (body.radius < 50)    
+        if (body.radius > 60)    
             SpawnFracturedPieces();
-
+        
+        explosion.transform.localScale = Vector3.one * body.radius / 10;
         Instantiate(explosion, transform.position, Quaternion.identity);
+
+        Destroy(gameObject);
     }
 
     private void SpawnFracturedPieces()
     {
-        int numPieces = Random.Range(1, 2);
+        int numPieces = Random.Range(2, 4);
 
         for (int i = 0; i < numPieces; i++)
         {
@@ -60,7 +63,6 @@ public class AsteroidHealth : MonoBehaviour, IDestructible
         if (health < 0)
         {
             Fracture();
-            Destroy(gameObject);
         }
     }
 

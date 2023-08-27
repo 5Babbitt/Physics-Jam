@@ -13,7 +13,7 @@ public class UniverseSimManager : Singleton<UniverseSimManager>
 
     [SerializeField] private GameObject[] asteroidPrefabs; 
 
-    public int numberOfAsteroids;
+    [Range(0, 150)] public int numberOfAsteroids;
     public float maxSpawnRadius;  
 
     protected override void Awake() 
@@ -62,7 +62,7 @@ public class UniverseSimManager : Singleton<UniverseSimManager>
             Vector3 randomPosition = Random.insideUnitSphere * maxSpawnRadius;
             Quaternion randomRotation = Quaternion.Euler(Random.Range(0f, 360f), Random.Range(0f, 360f), Random.Range(0f, 360f));
 
-            float randomRadius = Random.Range(50f, 200f);
+            float randomRadius = Random.Range(25f, 200f);
             float randomSpeed = Random.Range(15f, 45f);
             float randomGravity = Random.Range(0.05f, 1f);
 
