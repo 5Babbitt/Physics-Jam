@@ -32,6 +32,6 @@ public class AsteroidHealth : MonoBehaviour, IDestructible
 
     private void OnDestroy() 
     {
-        
+        UniverseSimManager.Instance.OnGravityBodyDestroyed(GetComponent<GravityBody>());
     }
 }
