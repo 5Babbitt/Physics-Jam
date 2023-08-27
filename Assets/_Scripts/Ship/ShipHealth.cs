@@ -46,4 +46,9 @@ public class ShipHealth : ShipSystem, IDestructible
     {
         Debug.Log("Ship Destroyed");
     }
+
+    private void OnDestroy() 
+    {
+        UniverseSimManager.Instance.OnGravityBodyDestroyed(GetComponent<GravityBody>());
+    }
 }
