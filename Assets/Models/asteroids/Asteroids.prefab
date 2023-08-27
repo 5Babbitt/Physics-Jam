@@ -180,6 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 1
   surfaceGravity: 20
+  initialSpeed: 15
   initialVelocity: {x: 0, y: 0, z: -7}
   meshHolder: {fileID: 8102141899687651894}
   bodyType: 2
@@ -210,7 +211,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.2533932, y: 4.1460805, z: -3.6304054}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3447083490639190265}

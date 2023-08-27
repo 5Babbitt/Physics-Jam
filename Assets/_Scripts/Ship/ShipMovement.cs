@@ -12,6 +12,7 @@ public class ShipMovement : ShipSystem
     private float yawInput;
     private float rollInput;
     private bool applyThrust;
+    private bool applyThrustLastFrame;
     
     [Header("Rigidbody Values")]
     [SerializeField] private float mass;
@@ -54,6 +55,16 @@ public class ShipMovement : ShipSystem
     private void Update() 
     {
         CalculateTorque();
+
+        if (applyThrust != applyThrustLastFrame)
+        {
+            ship.id.Events.OnThrustValueChanged?.Invoke(applyThrust);
+        }
+    }
+
+    private void LateUpdate() 
+    {
+        applyThrustLastFrame = applyThrust;
     }
 
     private void FixedUpdate()

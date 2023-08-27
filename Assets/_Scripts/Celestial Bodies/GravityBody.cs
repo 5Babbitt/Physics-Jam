@@ -10,7 +10,7 @@ public class GravityBody : MonoBehaviour
     
 
     [Header("General Properties")]
-    [Range(1f, 200f)] public float radius = 5f;
+    [Range(1f, 250f)] public float radius = 5f;
     public float surfaceGravity = 1;
     public float initialSpeed = 15f;
     public Vector3 initialVelocity;

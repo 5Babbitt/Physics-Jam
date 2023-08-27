@@ -12,7 +12,7 @@ public class ShipWeaponSystem : ShipSystem
     [SerializeField] private GameObject torpedo;
 
     [Header("General Settings")]
-    [SerializeField] private Transform firePoint;
+    [SerializeField] private Transform[] firePoints;
 
     protected override void Awake() 
     {
@@ -52,9 +52,12 @@ public class ShipWeaponSystem : ShipSystem
         if (NumTorpedoes <= 0)
             return;
         
-        Instantiate(torpedo, firePoint.position, firePoint.rotation).GetComponent<Torpedo>();
-        ship.id.Events.OnTorpedoFired?.Invoke();
-
+        foreach (Transform t in firePoints)
+        {
+            Instantiate(torpedo, t.position, t.rotation).GetComponent<Torpedo>();
+            ship.id.Events.OnTorpedoFired?.Invoke();
+        }
+        
         ResetCooldown();
     }
 

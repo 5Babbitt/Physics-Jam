@@ -23,6 +23,7 @@ public struct ShipEvents
 
     // Movement Events
     public Action OnThrust;
+    public Action<bool> OnThrustValueChanged;
     public Action<float> OnFuelChanged;
     public Action OnFuelEmpty;
     public Action OnFuelRefilled;
@@ -40,5 +41,4 @@ public struct ShipEvents
     // UI Events
     public Action<int> OnHealthChanged;
     public Action<int> OnTorpedoCountChanged;
-
 }

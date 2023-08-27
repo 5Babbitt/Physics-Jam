@@ -6,26 +6,27 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class ShipFX : ShipSystem
 {
-    [SerializeField] private AudioClip explosion;
     [SerializeField] private AudioClip thrust;
     [SerializeField] private AudioClip shoot;
-    private AudioSource explosionSource;
     private AudioSource thrustSource;
     private AudioSource shootSource;
+
+    [SerializeField] private GameObject explosion;
 
     protected override void Awake()
     {
         base.Awake();
 
-        explosionSource = gameObject.AddComponent<AudioSource>();
-        thrustSource = gameObject.AddComponent<AudioSource>();
+        thrustSource = gameObject.GetComponent<AudioSource>();
         shootSource = gameObject.AddComponent<AudioSource>();
+
+        thrustSource.clip = thrust;
     }
 
     private void OnEnable() 
     {
         ship.id.Events.OnTorpedoFired += OnTorpedoFired;
-        ship.id.Events.OnThrust += OnThrust;
+        ship.id.Events.OnThrustValueChanged += OnThrust;
         ship.id.Events.OnShipExplode += OnShipExplode;
         ship.id.Events.OnTakeDamage += OnTakeDamage;
         ship.id.Events.OnEnteredHyperspace += OnEnteredHyperspace;
@@ -35,11 +36,16 @@ public class ShipFX : ShipSystem
     private void OnDisable() 
     {
         ship.id.Events.OnTorpedoFired -= OnTorpedoFired;
-        ship.id.Events.OnThrust -= OnThrust;
+        ship.id.Events.OnThrustValueChanged += OnThrust;
         ship.id.Events.OnShipExplode -= OnShipExplode;
         ship.id.Events.OnTakeDamage -= OnTakeDamage;
         ship.id.Events.OnEnteredHyperspace -= OnEnteredHyperspace;
         ship.id.Events.OnExitHyperspace -= OnExitHyperspace;
+    }
+
+    private void Update() 
+    {
+        
     }
 
     private void OnExitHyperspace()
@@ -54,24 +60,37 @@ public class ShipFX : ShipSystem
 
     private void OnTakeDamage(int value)
     {
-      
+        
     }
 
     private void PlaySound(AudioSource source, AudioClip clip)
     {
-        source.clip = clip;
+        source.PlayOneShot(clip);
+    }
+
+    private void PlaySource(AudioSource source)
+    {
         source.Play();
+    }
+
+    private void PauseSource(AudioSource source)
+    {
+        source.Pause();
     }
 
     private void OnShipExplode()
     {
-        PlaySound(explosionSource, explosion);
+        Instantiate(explosion);
     }
 
-    private void OnThrust()
+    private void OnThrust(bool value)
     {
-        PlaySound(thrustSource, thrust);
+        if (value)
+            PlaySource(thrustSource);
+        else if (!value)
+            PauseSource(thrustSource);
     }
+
 
     private void OnTorpedoFired()
     {

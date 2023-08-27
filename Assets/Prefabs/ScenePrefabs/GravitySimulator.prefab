@@ -51,12 +51,14 @@ MonoBehaviour:
   bodies:
   - {fileID: 0}
   - {fileID: 0}
-  Star: {fileID: 2510999593091706525}
+  Star: {fileID: 0}
   asteroidPrefabs:
-  - {fileID: 2693498458627142625, guid: 359c74b070e4bf3458e5fdf3f5064ba5, type: 3}
-  - {fileID: 689569246659551620, guid: 8789d319242033b4d8fc72641773f9c6, type: 3}
-  - {fileID: 3649767524089198433, guid: b5c0eec2546c1ea489e6c194167f8a40, type: 3}
-  numberOfAsteroids: 150
+  - {fileID: 4617975801595377417, guid: 359c74b070e4bf3458e5fdf3f5064ba5, type: 3}
+  - {fileID: 1422707948419642754, guid: 8789d319242033b4d8fc72641773f9c6, type: 3}
+  - {fileID: 4061634263492806842, guid: b5c0eec2546c1ea489e6c194167f8a40, type: 3}
+  - {fileID: 3364937997013638345, guid: 734328c33c538b54face9d930ff1933f, type: 3}
+  - {fileID: 7448126603835806344, guid: bae1991958f1f0e49b6c7b6442d7101f, type: 3}
+  numberOfAsteroids: 100
   maxSpawnRadius: 1500
 --- !u!135 &1441613076838019735
 SphereCollider:

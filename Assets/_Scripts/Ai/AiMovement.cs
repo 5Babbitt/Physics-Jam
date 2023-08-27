@@ -17,6 +17,11 @@ public class AiMovement : MonoBehaviour
     private float retreatTimer = 0f;
     private float cooldownTimer = 0f;
 
+    private void Awake() 
+    {
+        player = FindObjectOfType<Ship>().transform;
+    }
+
     private void Start()
     {
         initialPosition = transform.position;
