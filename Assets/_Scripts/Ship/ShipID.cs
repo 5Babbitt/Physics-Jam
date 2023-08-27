@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 [CreateAssetMenu]
@@ -41,4 +42,5 @@ public struct ShipEvents
     // UI Events
     public Action<int> OnHealthChanged;
     public Action<int> OnTorpedoCountChanged;
+    public Action<float> OnHyperspaceCooldownChanged;
 }

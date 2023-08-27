@@ -3,7 +3,7 @@ using UnityEngine.VFX;
 
 public class AsteroidHealth : MonoBehaviour, IDestructible
 {
-    public int health = 20;
+    public int health = 10;
     public GravityBody body;
 
     public GameObject explosion;
@@ -18,29 +18,32 @@ public class AsteroidHealth : MonoBehaviour, IDestructible
     {
         var body = other.gameObject.GetComponent<GravityBody>();
 
-        if (body.bodyType == BodyTypes.asteroid)
+        if (body != null && body.bodyType == BodyTypes.asteroid)
         {
             return;
         }
-
-        if(body.bodyType == BodyTypes.star)
+        else if(body != null && body.bodyType == BodyTypes.star)
+        {
             Destroy(gameObject);
+            TakeDamage(100);
+        }
 
-        TakeDamage(100);
     }
 
     public void Fracture()
     {
         Debug.Log("Asteroid Destroyed");
+        Universe.OnGravityBodyDestroyed?.Invoke(GetComponent<GravityBody>());
 
-        // SpawnFracturedPieces();
+        if (body.radius < 50)    
+            SpawnFracturedPieces();
 
         Instantiate(explosion, transform.position, Quaternion.identity);
     }
 
     private void SpawnFracturedPieces()
     {
-        int numPieces = Random.Range(3, 7);
+        int numPieces = Random.Range(1, 2);
 
         for (int i = 0; i < numPieces; i++)
         {

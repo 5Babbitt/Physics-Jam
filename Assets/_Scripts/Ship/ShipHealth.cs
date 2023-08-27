@@ -15,6 +15,16 @@ public class ShipHealth : ShipSystem, IDestructible
         currentHealth = maxHealth;
     }
 
+    private void OnEnable() 
+    {
+        ship.id.Events.OnTakeDamage += TakeDamage;
+    }
+
+    private void OnDisable() 
+    {
+        ship.id.Events.OnTakeDamage -= TakeDamage;
+    }
+
     private void OnCollisionEnter(Collision other) 
     {
         var body = other.gameObject.GetComponent<GravityBody>();

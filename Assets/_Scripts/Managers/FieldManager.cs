@@ -65,22 +65,6 @@ public class FieldManager : Singleton<FieldManager>
         return centre - heading;
     }
 
-    private IEnumerator TeleportShip(GameObject body, Vector3 position)
-    {
-        Rigidbody shipRB = body.GetComponent<Rigidbody>();
-        Vector3 velocity = shipRB.velocity;
-        
-        Debug.Log("Ship Teleport Commencing");
-        Teleport(body, Vector3.one * 10000);
-            
-        shipRB.velocity = Vector3.zero;
-        
-        yield return new WaitForSeconds(3f);
-
-        Debug.Log("Ship Teleported");
-        Teleport(body, position, velocity);
-    }
-
     private void Teleport(GameObject body, Vector3 position)
     {
         body.transform.position = position;

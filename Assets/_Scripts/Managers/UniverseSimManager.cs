@@ -60,13 +60,13 @@ public class UniverseSimManager : Singleton<UniverseSimManager>
         for (int i = 0; i < numberOfAsteroids; i++)
         {
             Vector3 randomPosition = Random.insideUnitSphere * maxSpawnRadius;
-
             Quaternion randomRotation = Quaternion.Euler(Random.Range(0f, 360f), Random.Range(0f, 360f), Random.Range(0f, 360f));
 
-            float randomRadius = Random.Range(75f, 250f);
-            //GameObject spawnedItem = Instantiate(selectedPrefab, randomPosition, randomRotation);
+            float randomRadius = Random.Range(50f, 200f);
+            float randomSpeed = Random.Range(15f, 45f);
+            float randomGravity = Random.Range(0.05f, 1f);
 
-            SpawnAsteroid(randomPosition, randomRotation, Random.Range(50f, 75f), randomRadius);
+            SpawnAsteroid(randomPosition, randomRotation, randomSpeed, randomRadius, randomGravity);
         }
     }
 

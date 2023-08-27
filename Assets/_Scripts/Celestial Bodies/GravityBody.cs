@@ -31,6 +31,9 @@ public class GravityBody : MonoBehaviour
         surfaceGravity = grav;
         initialVelocity = Vector3.Cross(sim.Star.transform.position - transform.position, Vector3.up).normalized * initSpeed;
 
+        currentVelocity = initialVelocity;
+        rb.velocity = currentVelocity;
+
         bodyType = BodyTypes.asteroid;
 
         CalculateMass();
@@ -101,11 +104,6 @@ public class GravityBody : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.mass = mass;
-    }
-
-    private void OnDestroy() 
-    {
-        Universe.OnGravityBodyDestroyed?.Invoke(this);
     }
 
     private void OnDrawGizmosSelected() 

@@ -30,9 +30,9 @@ public class ShipExplosion : MonoBehaviour
 
     private void Update() 
     {
-        lifetime -= Time.deltaTime;
+        currentLife -= Time.deltaTime;
 
-        if (lifetime < 0)
+        if (currentLife < 0)
             Destroy(gameObject);
     }
 }

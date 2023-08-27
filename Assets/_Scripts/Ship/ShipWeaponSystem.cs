@@ -13,12 +13,16 @@ public class ShipWeaponSystem : ShipSystem
 
     [Header("General Settings")]
     [SerializeField] private Transform[] firePoints;
+    [SerializeField] private Transform targetPoint;
 
     protected override void Awake() 
     {
         base.Awake();
 
-        
+        foreach (Transform point in firePoints)
+        {
+            point.forward = (targetPoint.position - point.position).normalized;
+        }
     }
 
     private void OnEnable() 

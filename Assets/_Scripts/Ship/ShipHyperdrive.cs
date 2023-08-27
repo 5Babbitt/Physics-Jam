@@ -135,6 +135,7 @@ public class ShipHyperdrive : ShipSystem
 
     private void Teleport(Vector3 position)
     {
+        transform.forward = (UniverseSimManager.Instance.Star.transform.position - position).normalized;
         rb.position = position;
     }
 

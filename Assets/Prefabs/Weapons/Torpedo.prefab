@@ -245,7 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 365489c22e2840841979b3454d1ec409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <velocity>k__BackingField: 250
+  <velocity>k__BackingField: 350
   lifetime: 5
   currentLifetime: 5
   damage: 10
@@ -311,5 +311,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3d15ee3ed1dda44192268b685759a53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  rotationSpeed: 0
+  speed: 15
+  rotationSpeed: 15
