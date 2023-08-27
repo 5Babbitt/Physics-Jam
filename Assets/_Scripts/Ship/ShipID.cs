@@ -32,11 +32,13 @@ public struct ShipEvents
     public Action OnEnteredHyperspace;
     public Action OnExitHyperspace;
 
-    // Collision Events
+    // Combat Events
     public Action<int> OnTakeDamage;
     public Action OnShipExplode;
+    public Action OnTorpedoFired;
 
     // UI Events
-
+    public Action<int> OnHealthChanged;
+    public Action<int> OnTorpedoCountChanged;
 
 }

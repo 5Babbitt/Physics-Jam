@@ -53,6 +53,7 @@ public class ShipWeaponSystem : ShipSystem
             return;
         
         Instantiate(torpedo, firePoint.position, firePoint.rotation).GetComponent<Torpedo>();
+        ship.id.Events.OnTorpedoFired?.Invoke();
 
         ResetCooldown();
     }

@@ -60,6 +60,8 @@ public class ShipHyperdrive : ShipSystem
         Debug.Log("Entered Hyperspace");
         // Teleport to Hyperspace Region
         rb.position = hyperspace;
+
+        ship.id.Events.OnEnteredHyperspace?.Invoke();
     }
 
     private IEnumerator TeleportRandom()
@@ -77,6 +79,7 @@ public class ShipHyperdrive : ShipSystem
         yield return new WaitForSeconds(timeInHyperspace);
         
         Debug.Log("Exited Hyperspace");
+        ship.id.Events.OnExitHyperspace?.Invoke();
         
         willExplode = CheckIfExplode(); // Check if will explode on Reentry
 
@@ -123,6 +126,7 @@ public class ShipHyperdrive : ShipSystem
         yield return new WaitForSeconds(timeInHyperspace);
         
         Debug.Log("Exited Hyperspace");
+        ship.id.Events.OnExitHyperspace?.Invoke();
         
         Teleport(position);
         rb.isKinematic = false;

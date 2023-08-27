@@ -35,6 +35,9 @@ public class ShipHealth : ShipSystem, IDestructible
         if (currentHealth <= 0)
         {
             Fracture();
+
+            ship.id.Events.OnShipExplode?.Invoke();
+
             Destroy(gameObject);
         }
     }
