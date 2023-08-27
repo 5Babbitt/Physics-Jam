@@ -33,7 +33,7 @@ public class AsteroidHealth : MonoBehaviour, IDestructible
     {
         Debug.Log("Asteroid Destroyed");
 
-        SpawnFracturedPieces();
+        // SpawnFracturedPieces();
 
         Instantiate(explosion, transform.position, Quaternion.identity);
     }
