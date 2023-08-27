@@ -1,21 +1,27 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
-    public void PlayGame()
+    public GameObject loadingScreen;
+    public Slider slider;
+    public void LoadLevel(int sceneIndex)
     {
-        SceneManager.LoadSceneAsync(1);
+       StartCoroutine(LoadAsynchronously(sceneIndex));
     }
-    public void multiplayer()
+    IEnumerator LoadAsynchronously (int sceneIndex)
     {
-        SceneManager.LoadSceneAsync(2);
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
+        loadingScreen.SetActive(true);
+        while (!operation.isDone) 
+        {
+            float progress = Mathf.Clamp01(operation.progress / .9f);
+            slider.value = progress;
+            yield return null;
+        }
     }
-
-    public void OpenSettings()
-    {
-        SceneManager.LoadSceneAsync(5);
-    }
+   
     public void QuitGame()
     {
         Application.Quit();
