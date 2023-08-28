@@ -59,6 +59,7 @@ public class ShipHealth : ShipSystem, IDestructible
 
     private void OnDestroy() 
     {
-        UniverseSimManager.Instance.OnGravityBodyDestroyed(GetComponent<GravityBody>());
+        if (UniverseSimManager.Instance != null)
+            UniverseSimManager.Instance.OnGravityBodyDestroyed(GetComponent<GravityBody>());
     }
 }

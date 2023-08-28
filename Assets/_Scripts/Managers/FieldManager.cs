@@ -9,6 +9,8 @@ public class FieldManager : Singleton<FieldManager>
 {
     private Rigidbody rb;
     private SphereCollider col;
+    private MeshFilter meshFilter;
+    private MeshRenderer meshRenderer;
 
     [SerializeField] private Vector3 centre = Vector3.zero;
     [SerializeField] private float radius = 2500f;
@@ -27,6 +29,8 @@ public class FieldManager : Singleton<FieldManager>
     {
         rb = GetComponent<Rigidbody>();
         col = GetComponent<SphereCollider>();
+        meshFilter = GetComponent<MeshFilter>();
+        meshRenderer = GetComponent<MeshRenderer>();
 
         rb.isKinematic = true;
         rb.useGravity = false;
