@@ -5,12 +5,10 @@ using QFSW.QC;
 public class UniverseSimManager : Singleton<UniverseSimManager>
 {
     private FieldManager field; 
+    public GravityBody GravityCentre;
+    [field:SerializeField] public Universe universalValues { get; private set; }
     
     [SerializeField] List<GravityBody> bodies = new List<GravityBody>();
-    [field:SerializeField] public Universe universalValues { get; private set; }
-
-    public GravityBody Star;
-
     [SerializeField] private GameObject[] asteroidPrefabs; 
 
     [Range(0, 150)] public int numberOfAsteroids;
@@ -26,7 +24,7 @@ public class UniverseSimManager : Singleton<UniverseSimManager>
         foreach (var body in bodies)
         {
             if (body.bodyType == BodyTypes.star)
-                Star = body;
+                GravityCentre = body;
             
             break;
         }
@@ -44,7 +42,7 @@ public class UniverseSimManager : Singleton<UniverseSimManager>
         foreach (var body in bodies)
         {
             if (body.bodyType == BodyTypes.star)
-                Star = body;
+                GravityCentre = body;
             
             break;
         }

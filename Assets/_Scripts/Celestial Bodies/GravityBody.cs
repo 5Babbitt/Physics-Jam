@@ -29,7 +29,7 @@ public class GravityBody : MonoBehaviour
     {
         radius = rad;
         surfaceGravity = grav;
-        initialVelocity = Vector3.Cross(sim.Star.transform.position - transform.position, Vector3.up).normalized * initSpeed;
+        initialVelocity = Vector3.Cross(sim.GravityCentre.transform.position - transform.position, Vector3.up).normalized * initSpeed;
 
         currentVelocity = initialVelocity;
         rb.velocity = currentVelocity;
@@ -48,7 +48,7 @@ public class GravityBody : MonoBehaviour
         sim = UniverseSimManager.Instance;
         
         if (bodyType == BodyTypes.planet || bodyType == BodyTypes.asteroid)
-            initialVelocity = Vector3.Cross(sim.Star.transform.position - transform.position, Vector3.up).normalized * initialSpeed;
+            initialVelocity = Vector3.Cross(sim.GravityCentre.transform.position - transform.position, Vector3.up).normalized * initialSpeed;
 
         currentVelocity = initialVelocity;
         

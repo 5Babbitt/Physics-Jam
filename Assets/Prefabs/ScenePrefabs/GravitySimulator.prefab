@@ -272,8 +272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bodies:
   - {fileID: 0}
-  - {fileID: 0}
-  Star: {fileID: 2510999593091706525}
+  Star: {fileID: 0}
   asteroidPrefabs:
   - {fileID: 4617975801595377417, guid: 359c74b070e4bf3458e5fdf3f5064ba5, type: 3}
   - {fileID: 1422707948419642754, guid: 8789d319242033b4d8fc72641773f9c6, type: 3}
