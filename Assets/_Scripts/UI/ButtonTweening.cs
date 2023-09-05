@@ -23,12 +23,18 @@ public class ButtonTweening : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (!button.interactable)
+            return;
+        
         Debug.Log($"Button Hover");
         LeanTween.scale(button.gameObject, newScale, duration);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        if (!button.interactable)
+            return;
+        
         Debug.Log($"Button Hover Exit");
         LeanTween.scale(button.gameObject, defaultScale, duration);
     }

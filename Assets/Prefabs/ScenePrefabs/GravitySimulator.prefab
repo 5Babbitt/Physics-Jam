@@ -270,9 +270,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b37fd0232b37ffc44a8585861cfff9d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GravityCentre: {fileID: 0}
   bodies:
   - {fileID: 0}
-  Star: {fileID: 0}
   asteroidPrefabs:
   - {fileID: 4617975801595377417, guid: 359c74b070e4bf3458e5fdf3f5064ba5, type: 3}
   - {fileID: 1422707948419642754, guid: 8789d319242033b4d8fc72641773f9c6, type: 3}
