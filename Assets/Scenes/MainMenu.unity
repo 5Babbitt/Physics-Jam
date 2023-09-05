@@ -533,11 +533,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6860693286109826458, guid: 3bd330d4ecf5ec546969f96aa594180b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6860693286109826458, guid: 3bd330d4ecf5ec546969f96aa594180b,
+        type: 3}
+      propertyPath: GravityCentre
+      value: 
+      objectReference: {fileID: 232412267}
+    - target: {fileID: 6860693286109826458, guid: 3bd330d4ecf5ec546969f96aa594180b,
+        type: 3}
+      propertyPath: bodies.Array.data[0]
+      value: 
+      objectReference: {fileID: 232412267}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3bd330d4ecf5ec546969f96aa594180b, type: 3}
+--- !u!114 &232412267 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2510999593091706525, guid: 3bd330d4ecf5ec546969f96aa594180b,
+    type: 3}
+  m_PrefabInstance: {fileID: 232412266}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83657a3a685445b4296da86f4d5ea927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &467634295
 GameObject:
   m_ObjectHideFlags: 0
@@ -1292,8 +1319,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 1159149862}
-  sizeMultiplier: 1.1
-  duration: 0.5
+  duration: 0.09
+  defaultScale: {x: 1, y: 1, z: 1}
+  newScale: {x: 1.1, y: 1.1, z: 1.1}
 --- !u!1 &1159496605
 GameObject:
   m_ObjectHideFlags: 0
