@@ -565,7 +565,19 @@ MonoBehaviour:
   m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7348638513218219538}
+        m_TargetAssemblyTypeName: VolumeOption, Assembly-CSharp
+        m_MethodName: SetVolumePercent
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7311766990825070013
 GameObject:
   m_ObjectHideFlags: 0
@@ -817,7 +829,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Volume Slider
+  m_text: Slider Volume
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9cf50abf8f5dae041814488103b16846, type: 2}
   m_sharedMaterial: {fileID: -8855654869179469890, guid: 9cf50abf8f5dae041814488103b16846,
@@ -965,8 +977,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 363ad46bf18f7a94fb36545253448f04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  optionName: Volume Slider
+  optionName: Slider
   volumePercent: 100
+  volumeValue: 40
   percentValueText: {fileID: 63820165904375659}
   optionNameText: {fileID: 6474759827377814210}
   volumeSlider: {fileID: 4747679570602655946}
+  mixer: {fileID: 24100000, guid: e4b79947ff490a1418e79e6a916d9894, type: 2}
