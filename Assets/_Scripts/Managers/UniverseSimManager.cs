@@ -21,13 +21,13 @@ public class UniverseSimManager : Singleton<UniverseSimManager>
         field = GetComponent<FieldManager>();
         maxSpawnRadius = field.Radius;
 
-        foreach (var body in bodies)
+        /* foreach (var body in bodies)
         {
             if (body.bodyType == BodyTypes.star)
                 GravityCentre = body;
             
             break;
-        }
+        } */
         
         SetupBodiesList();
     }
@@ -39,13 +39,13 @@ public class UniverseSimManager : Singleton<UniverseSimManager>
 
         maxSpawnRadius = field.Radius;
 
-        foreach (var body in bodies)
+        /* foreach (var body in bodies)
         {
             if (body.bodyType == BodyTypes.star)
                 GravityCentre = body;
             
             break;
-        }
+        } */
     }
 
     private void Start()
