@@ -21,6 +21,7 @@ public class VolumeOption : MonoBehaviour
     
     [Header("Values")]
     public string optionName;
+    [Range(0, 1), SerializeField] private float sliderVolume; 
     [Range(0, 100)] public int volumePercent;
     public float volumeValue;
 
@@ -43,15 +44,16 @@ public class VolumeOption : MonoBehaviour
         optionNameText.text = $"{optionName} Volume";
         percentValueText.text = volumePercent.ToString();
         
-        volumeSlider.value = volumePercent;
-        volumeValue = Mathf.Log10(volumePercent) * 20;
+        volumeSlider.value = sliderVolume;
+        volumeValue = Mathf.Log10(sliderVolume) * 20;
     }
 
     public void SetVolumePercent(float value)
     {
-        volumePercent = (int)value;
+        sliderVolume = value;
+        volumePercent = (int)(sliderVolume * 100);
         
-        volumeValue = Mathf.Log10(volumePercent) * 20;
+        volumeValue = Mathf.Log10(sliderVolume) * 20;
 
         SetVolume();
     }
@@ -61,7 +63,7 @@ public class VolumeOption : MonoBehaviour
         percentValueText.text = volumePercent.ToString();
         
         mixer.SetFloat(optionName, volumeValue);
-        PlayerPrefs.SetFloat(optionName, volumePercent);
+        PlayerPrefs.SetFloat(optionName, sliderVolume);
     }
 
     private void LoadVolume()
