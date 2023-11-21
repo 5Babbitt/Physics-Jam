@@ -21,8 +21,8 @@ public class VolumeOption : MonoBehaviour
     
     [Header("Values")]
     public string optionName;
-    [Range(0, 1), SerializeField] private float sliderVolume; 
-    [Range(0, 100)] public int volumePercent;
+    [Range(0, 1), SerializeField] private float sliderVolume = 1; 
+    [Range(0, 100)] public int volumePercent = 100;
     public float volumeValue;
 
     [Header("Object References")]
