@@ -71,7 +71,7 @@ public class ShipHyperdrive : ShipSystem
 
         ship.id.Events.OnHyperdriveActivated?.Invoke();
         
-        rb.velocity = Vector3.zero;
+        rb.linearVelocity = Vector3.zero;
         rb.isKinematic = true;
         
         EnterHyperspace();
@@ -118,7 +118,7 @@ public class ShipHyperdrive : ShipSystem
 
     private IEnumerator TeleportToPosition(Vector3 position, Vector3 velocity)
     {
-        rb.velocity = Vector3.zero;
+        rb.linearVelocity = Vector3.zero;
         rb.isKinematic = true;
         
         EnterHyperspace();
@@ -130,7 +130,7 @@ public class ShipHyperdrive : ShipSystem
         
         Teleport(position);
         rb.isKinematic = false;
-        rb.velocity = velocity;
+        rb.linearVelocity = velocity;
     }
 
     private void Teleport(Vector3 position)

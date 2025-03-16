@@ -32,7 +32,7 @@ public class GravityBody : MonoBehaviour
         initialVelocity = Vector3.Cross(sim.GravityCentre.transform.position - transform.position, Vector3.up).normalized * initSpeed;
 
         currentVelocity = initialVelocity;
-        rb.velocity = currentVelocity;
+        rb.linearVelocity = currentVelocity;
 
         bodyType = BodyTypes.asteroid;
 
@@ -55,7 +55,7 @@ public class GravityBody : MonoBehaviour
         SetupRigidbody();
 
         rb.useGravity = false;
-        rb.velocity = currentVelocity;
+        rb.linearVelocity = currentVelocity;
     }
 
     public void UpdateForce(GravityBody[] allBodies)

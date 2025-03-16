@@ -54,7 +54,7 @@ public class FieldManager : Singleton<FieldManager>
         {    
             Debug.Log("ship exited");
             
-            ship.FieldTeleport(newPosition, body.GetComponent<Rigidbody>().velocity);
+            ship.FieldTeleport(newPosition, body.GetComponent<Rigidbody>().linearVelocity);
 
             return;
         } 
@@ -77,7 +77,7 @@ public class FieldManager : Singleton<FieldManager>
     private void Teleport(GameObject body, Vector3 position, Vector3 velocity)
     {
         body.transform.position = position;
-        body.GetComponent<Rigidbody>().velocity = velocity / 2;
+        body.GetComponent<Rigidbody>().linearVelocity = velocity / 2;
     }
 
     private void OnDrawGizmos() 

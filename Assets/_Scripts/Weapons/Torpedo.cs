@@ -21,7 +21,7 @@ public class Torpedo : MonoBehaviour
 
     private void Start() 
     {
-        rb.velocity = transform.forward * velocity;
+        rb.linearVelocity = transform.forward * velocity;
 
         currentLifetime = lifetime;
     }

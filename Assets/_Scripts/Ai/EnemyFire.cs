@@ -43,7 +43,7 @@ public class EnemyFire : MonoBehaviour
         {
             GameObject torpedo = Instantiate(torpedoPrefab, firePoint.position, firePoint.rotation);
             Rigidbody torpedoRigidbody = torpedo.GetComponent<Rigidbody>();
-            torpedoRigidbody.velocity = torpedo.transform.forward * torpedoSpeed;
+            torpedoRigidbody.linearVelocity = torpedo.transform.forward * torpedoSpeed;
             Destroy(torpedo, 10.0f);
             OnTorpedoFired();
    

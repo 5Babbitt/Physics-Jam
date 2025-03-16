@@ -79,7 +79,7 @@ public class ShipMovement : ShipSystem
     {
         int thrustInput = applyThrust ? 1 : 0;
 
-        float directionMultiplier = thrustFromDot.Evaluate(Vector3.Dot(transform.forward, rb.velocity.normalized));
+        float directionMultiplier = thrustFromDot.Evaluate(Vector3.Dot(transform.forward, rb.linearVelocity.normalized));
         
         rb.AddForce(thrustInput * mass * thrustSpeed * directionMultiplier * transform.forward);
 
@@ -127,6 +127,6 @@ public class ShipMovement : ShipSystem
         rb = GetComponent<Rigidbody>();
         
         mass = rb.mass;
-        rb.angularDrag = angularDrag;
+        rb.angularDamping = angularDrag;
     }
 }
